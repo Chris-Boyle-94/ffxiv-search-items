@@ -1,0 +1,25 @@
+{
+  "name": "ffxiv-search-v2",
+  "version": "1.0.0",
+  "description": "This application uses FFXIV's API to search for items that exist in the game. ",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon",
+    "test": "npx jest"
+  },
+  "author": "Chris Boyle",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "helmet": "^4.6.0",
+    "knex": "^0.95.15",
+    "pg": "^8.7.1"
+  }
+}
