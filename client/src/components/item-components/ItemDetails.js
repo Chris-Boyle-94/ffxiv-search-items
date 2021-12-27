@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import Spinner from "./Spinner";
+import Spinner from "../Spinner";
 import axios from "axios";
 import { connect } from "react-redux";
-import { click } from "../actions";
+import { click } from "../../actions";
 
 const ItemDetails = ({ targetItem, click, userFavorites }) => {
     const [data, setData] = useState({});

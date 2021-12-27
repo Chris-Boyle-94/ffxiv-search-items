@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { click } from "../actions";
+import { click } from "../../actions";
 
 const ItemCard = ({ data, setSelectedId, click }) => {
     const { Icon, Name, ID } = data;
