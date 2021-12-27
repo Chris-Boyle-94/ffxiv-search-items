@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const baseUrl = process.env.baseUrl || "http://localhost:3333";
 const initialValues = {
@@ -7,8 +8,9 @@ const initialValues = {
     password: "",
 };
 
-const Login = (props) => {
+const Login = () => {
     const [formValues, setFormValues] = useState(initialValues);
+    const history = useHistory();
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -26,8 +28,7 @@ const Login = (props) => {
                 formValues
             );
             localStorage.setItem("token", response.data.token);
-            console.log(response.data.token);
-            props.history.push("/");
+            history.push("/");
         } catch (err) {
             console.log(err);
         }

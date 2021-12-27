@@ -7,19 +7,17 @@ function App() {
     return (
         <Router>
             <div>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/account">Account</Link>
-                        </li>
-                        <li>
-                            <Link to="/">Logout</Link>
-                        </li>
-                    </ul>
-                </nav>
+                <ul>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/account">Account</Link>
+                    </li>
+                    <li>
+                        <Link to="/">Logout</Link>
+                    </li>
+                </ul>
                 <Switch>
                     <Route path="/account" component={AccountPage} />
                     <Route exact path="/" component={HomePage} />
