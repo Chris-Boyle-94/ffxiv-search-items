@@ -28,7 +28,7 @@ router.get("/:id", async (req, res, next) => {
 //eslint-disable-next-line
 router.use((err, req, res, next) => {
     res.status(err.status || 500).json({
-        custom: "Something went wrong with the router.",
+        custom: "Something went wrong with the items router.",
         message: err.message,
         stack: err.stack,
     });

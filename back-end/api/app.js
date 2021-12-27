@@ -3,6 +3,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 const itemsRouter = require("./items/items-router");
+const favoritesRouter = require("./favorites/favorites-router");
 
 const server = express();
 
@@ -11,6 +12,7 @@ server.use(cors());
 server.use(helmet());
 
 server.use("/items", itemsRouter);
+server.use("/favorites", favoritesRouter);
 
 server.get("/", (req, res) => {
     res.json({ message: "api is up and running" });
