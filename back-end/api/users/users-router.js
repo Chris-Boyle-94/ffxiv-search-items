@@ -1,12 +1,12 @@
 const express = require("express");
 
 const router = express.Router();
-const Favorites = require("./favorites-model");
+const Users = require("./users-model");
 
 router.get("/", (req, res, next) => {
-    Favorites.findAll()
-        .then((favorites) => {
-            res.status(200).json(favorites);
+    Users.findAll()
+        .then((users) => {
+            res.status(200).json(users);
         })
         .catch((err) => {
             next(err);
