@@ -1,9 +1,16 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import AccountPage from "./components/account-components/AccountPage";
+import Credentials from "./components/credentials-components/Credentials";
 import HomePage from "./components/HomePage";
+import FavoritesPage from "./components/FavoritesPage";
 
 function App() {
+    const token = localStorage.getItem("token");
+
+    const logout = () => {
+        localStorage.removeItem("token");
+    };
+
     return (
         <Router>
             <div>
@@ -11,15 +18,24 @@ function App() {
                     <li>
                         <Link to="/">Home</Link>
                     </li>
+                    {token ? (
+                        <li>
+                            <Link to="/favorites">Favorite Items</Link>
+                        </li>
+                    ) : (
+                        <li>
+                            <Link to="/cred">Sign up/Login</Link>
+                        </li>
+                    )}
                     <li>
-                        <Link to="/account">Account</Link>
-                    </li>
-                    <li>
-                        <Link to="/">Logout</Link>
+                        <Link to="/" onClick={logout}>
+                            Logout
+                        </Link>
                     </li>
                 </ul>
                 <Switch>
-                    <Route path="/account" component={AccountPage} />
+                    <Route path="/favorites" component={FavoritesPage} />
+                    <Route path="/cred" component={Credentials} />
                     <Route exact path="/" component={HomePage} />
                 </Switch>
             </div>
