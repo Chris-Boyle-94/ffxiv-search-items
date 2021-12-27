@@ -35,7 +35,7 @@ router.post("/register", validateNewUser, async (req, res, next) => {
 
 router.post("/login", validateExistingUser, async (req, res, next) => {
     const { username, password } = req.body;
-    // console.log(req.body);
+
     try {
         const user = await Users.findUserByUsername(username);
         if (user && bcrypt.compareSync(password, user.password)) {

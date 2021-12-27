@@ -7,7 +7,7 @@ const initialValues = {
     password: "",
 };
 
-const Login = () => {
+const Login = (props) => {
     const [formValues, setFormValues] = useState(initialValues);
 
     const handleChange = (e) => {
@@ -25,7 +25,9 @@ const Login = () => {
                 `${baseUrl}/users/login`,
                 formValues
             );
-            console.log(response);
+            localStorage.setItem("token", response.data.token);
+            console.log(response.data.token);
+            props.history.push("/");
         } catch (err) {
             console.log(err);
         }
