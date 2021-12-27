@@ -10,6 +10,7 @@ const ItemsContainer = ({ searchedItem, items, clicked, updateList }) => {
 
     useEffect(() => {
         updateList(searchedItem);
+        //eslint-disable-next-line
     }, [searchedItem]);
 
     const targetItem = items.find((item) => {

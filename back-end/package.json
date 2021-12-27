@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon",
-    "test": "npx jest"
+    "test": "npx jest",
+    "rollback": "npx knex --knexfile config/knexfile.js migrate:rollback",
+    "latest": "npx knex --knexfile config/knexfile.js migrate:latest",
+    "seed": "npx knex --knexfile config/knexfile.js seed:run",
+    "up": "npx knex --knexfile config/knexfile.js migrate:up",
+    "down": "npx knex --knexfile config/knexfile.js migrate:down"
   },
   "author": "Chris Boyle",
   "license": "ISC",
