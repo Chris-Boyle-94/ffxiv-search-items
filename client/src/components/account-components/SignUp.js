@@ -1,5 +1,7 @@
 import { useState } from "react";
+import axios from "axios";
 
+const baseUrl = process.env.baseUrl || "http://localhost:3333";
 const initialValues = {
     username: "",
     password: "",
@@ -16,9 +18,18 @@ const SignUp = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formValues);
+        try {
+            const response = await axios.post(
+                `${baseUrl}/users/register`,
+                formValues
+            );
+            console.log(response.data[0]);
+        } catch (err) {
+            console.log(err);
+        }
+
         setFormValues(initialValues);
     };
 
