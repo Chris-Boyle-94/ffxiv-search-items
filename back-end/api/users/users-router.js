@@ -1,9 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const { buildToken } = require("../auth/token-builder");
 
 const Users = require("./users-model");
-const { validateNewUser } = require("../general-middleware");
+const {
+    validateNewUser,
+    validateExistingUser,
+} = require("../general-middleware");
 
 router.get("/", (req, res, next) => {
     Users.findAll()
@@ -26,6 +30,27 @@ router.post("/register", validateNewUser, async (req, res, next) => {
         res.status(201).json(response);
     } catch (err) {
         next(err);
+    }
+});
+
+router.post("/login", validateExistingUser, async (req, res, next) => {
+    const { username, password } = req.body;
+    // console.log(req.body);
+    try {
+        const user = await Users.findUserByUsername(username);
+        if (user && bcrypt.compareSync(password, user.password)) {
+            const token = buildToken(user);
+            res.status(200).json({
+                user_id: user.user_id,
+                message: `Signed in as user: ${username}`,
+                token,
+            });
+        }
+    } catch (err) {
+        next({
+            status: 401,
+            message: err,
+        });
     }
 });
 

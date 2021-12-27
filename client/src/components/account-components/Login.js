@@ -7,7 +7,7 @@ const initialValues = {
     password: "",
 };
 
-const SignUp = () => {
+const Login = () => {
     const [formValues, setFormValues] = useState(initialValues);
 
     const handleChange = (e) => {
@@ -22,10 +22,10 @@ const SignUp = () => {
         e.preventDefault();
         try {
             const response = await axios.post(
-                `${baseUrl}/users/register`,
+                `${baseUrl}/users/login`,
                 formValues
             );
-            console.log(response.data[0]);
+            console.log(response);
         } catch (err) {
             console.log(err);
         }
@@ -34,7 +34,7 @@ const SignUp = () => {
 
     return (
         <div>
-            <label>Sign Up</label>
+            <label>Login</label>
             <form onSubmit={handleSubmit}>
                 <input
                     name="username"
@@ -56,4 +56,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default Login;
