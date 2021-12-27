@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { connect } from "react-redux";
-import { updateList } from "../actions";
+import { updateList } from "../../actions";
 import ItemCard from "./ItemCard";
 import ItemDetails from "./ItemDetails";
 
