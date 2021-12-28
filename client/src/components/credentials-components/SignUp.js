@@ -33,6 +33,7 @@ const SignUp = () => {
                     formValues
                 );
                 localStorage.setItem("token", login.data.token);
+                localStorage.setItem("user_id", login.data.user_id);
                 history.push("/");
             }
         } catch (err) {

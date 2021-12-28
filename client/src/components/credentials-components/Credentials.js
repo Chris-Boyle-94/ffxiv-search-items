@@ -12,7 +12,7 @@ const Credentials = () => {
 
     return (
         <div>
-            {hasAccount ? (
+            {!hasAccount ? (
                 <div>
                     <Login />
                     <button onClick={handleClick}>

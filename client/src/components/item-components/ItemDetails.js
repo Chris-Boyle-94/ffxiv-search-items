@@ -5,9 +5,11 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { click } from "../../actions";
 
-const ItemDetails = ({ targetItem, click, userFavorites }) => {
+const ItemDetails = ({ targetItem, click }) => {
     const [data, setData] = useState({});
     const { Url, ID } = targetItem;
+    const userId = localStorage.getItem("user_id");
+    console.log(userId);
     const encodedUrl = encodeURI(Url);
     const baseUrl = process.env.baseUrl || "http://localhost:3333";
 
@@ -29,6 +31,18 @@ const ItemDetails = ({ targetItem, click, userFavorites }) => {
 
     const handleClick = () => {
         click();
+    };
+
+    const handleFavorite = async () => {
+        try {
+            const response = await axios.post(`${baseUrl}/favorites/`, {
+                user_id: userId,
+                item_id: ID,
+            });
+            console.log("res", response);
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     return (
@@ -60,6 +74,7 @@ const ItemDetails = ({ targetItem, click, userFavorites }) => {
                         <p>Magical Defense: {data.DefenseMag}</p>
                     ) : null}
                     {data.Description !== "" ? <p>{data.Description}</p> : null}
+                    <button onClick={handleFavorite}>Favorite this item</button>
                 </div>
             )}
         </div>

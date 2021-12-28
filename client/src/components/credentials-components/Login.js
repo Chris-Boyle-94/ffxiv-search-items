@@ -28,6 +28,7 @@ const Login = () => {
                 formValues
             );
             localStorage.setItem("token", response.data.token);
+            localStorage.setItem("user_id", response.data.user_id);
             history.push("/");
         } catch (err) {
             console.log(err);
