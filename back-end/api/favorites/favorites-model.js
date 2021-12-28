@@ -4,6 +4,10 @@ const findAll = () => {
     return db("favorites");
 };
 
+const findUserFavorites = (user_id) => {
+    return db("favorites").where({ user_id });
+};
+
 const findFavoriteByIds = (favorite) => {
     return db("favorites").where({
         user_id: favorite.user_id,
@@ -24,6 +28,7 @@ const newFavorite = (favorite) => {
 
 module.exports = {
     findAll,
+    findUserFavorites,
     findFavoriteByIds,
     newFavorite,
 };

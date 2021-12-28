@@ -14,6 +14,21 @@ router.get("/", (req, res, next) => {
         });
 });
 
+router.get("/:id", async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        const userFavorites = await Favorites.findUserFavorites(id);
+        if (userFavorites) {
+            res.status(200).json(userFavorites);
+        } else {
+            next();
+        }
+    } catch (err) {
+        next(err);
+    }
+});
+
 router.post("/", validateNewFavorite, async (req, res, next) => {
     const favoriteReq = req.body;
 

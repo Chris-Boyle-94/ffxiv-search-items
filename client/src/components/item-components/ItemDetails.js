@@ -34,15 +34,10 @@ const ItemDetails = ({ targetItem, click }) => {
     };
 
     const handleFavorite = async () => {
-        try {
-            const response = await axios.post(`${baseUrl}/favorites/`, {
-                user_id: userId,
-                item_id: ID,
-            });
-            console.log("res", response);
-        } catch (err) {
-            console.log(err);
-        }
+        axios.post(`${baseUrl}/favorites/`, {
+            user_id: userId,
+            item_id: ID,
+        });
     };
 
     return (

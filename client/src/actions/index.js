@@ -5,6 +5,7 @@ export const ITEM_UPDATE = "ITEM_UPDATE";
 export const CLICK = "CLICK";
 
 const baseUrl = process.env.baseUrl || "http://localhost:3333";
+const { user_id } = localStorage;
 
 export const search = (searchedItem) => {
     return { type: SEARCH, payload: searchedItem };
