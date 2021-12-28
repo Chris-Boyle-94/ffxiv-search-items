@@ -1,36 +1,44 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import ItemsContainer from "./components/item-components/ItemsContainer";
-import SearchForm from "./components/SearchForm";
-import AccountPage from "./components/account-components/AccountPage";
+import Credentials from "./components/credentials-components/Credentials";
+import HomePage from "./components/HomePage";
+import FavoritesPage from "./components/FavoritesPage";
 
 function App() {
+    const token = localStorage.getItem("token");
+
+    const logout = () => {
+        localStorage.removeItem("token");
+    };
+
     return (
         <Router>
-            <nav>
+            <div>
                 <ul>
                     <li>
                         <Link to="/">Home</Link>
                     </li>
+                    {token ? (
+                        <li>
+                            <Link to="/favorites">Favorite Items</Link>
+                        </li>
+                    ) : (
+                        <li>
+                            <Link to="/cred">Sign up/Login</Link>
+                        </li>
+                    )}
                     <li>
-                        <Link to="/account">Account</Link>
-                    </li>
-                    <li>
-                        <Link to="/">Logout</Link>
+                        <Link to="/" onClick={logout}>
+                            Logout
+                        </Link>
                     </li>
                 </ul>
-            </nav>
-            <Switch>
-                <Route path="/account">
-                    <AccountPage />
-                </Route>
-                <Route path="/">
-                    <div className="App">
-                        <SearchForm />
-                        <ItemsContainer />
-                    </div>
-                </Route>
-            </Switch>
+                <Switch>
+                    <Route path="/favorites" component={FavoritesPage} />
+                    <Route path="/cred" component={Credentials} />
+                    <Route exact path="/" component={HomePage} />
+                </Switch>
+            </div>
         </Router>
     );
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const baseUrl = process.env.baseUrl || "http://localhost:3333";
 const initialValues = {
@@ -9,6 +10,7 @@ const initialValues = {
 
 const SignUp = () => {
     const [formValues, setFormValues] = useState(initialValues);
+    const history = useHistory();
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -21,15 +23,21 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(
+            const signup = await axios.post(
                 `${baseUrl}/users/register`,
                 formValues
             );
-            console.log(response.data[0]);
+            if (signup) {
+                const login = await axios.post(
+                    `${baseUrl}/users/login`,
+                    formValues
+                );
+                localStorage.setItem("token", login.data.token);
+                history.push("/");
+            }
         } catch (err) {
             console.log(err);
         }
-
         setFormValues(initialValues);
     };
 
