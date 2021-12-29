@@ -9,6 +9,7 @@ function App() {
 
     const logout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("user_id");
     };
 
     return (
@@ -24,7 +25,7 @@ function App() {
                         </li>
                     ) : (
                         <li>
-                            <Link to="/cred">Sign up/Login</Link>
+                            <Link to="/cred">Login/Sign up</Link>
                         </li>
                     )}
                     <li>

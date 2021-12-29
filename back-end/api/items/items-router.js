@@ -15,11 +15,24 @@ router.get("/", async (req, res, next) => {
     }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/search", async (req, res, next) => {
     const { url } = req.query;
     try {
         const response = await axios.get(`https://xivapi.com${url}`);
         res.status(200).json(response.data);
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.get("/:id", async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        const response = await axios.get(
+            `https://xivapi.com/search?filters=ID=${id}&indexes=Item`
+        );
+        res.status(200).json(response.data.Results);
     } catch (err) {
         next(err);
     }
