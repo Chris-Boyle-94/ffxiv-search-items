@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { click } from "../../actions";
 
 const ItemDetails = ({ targetItem, click }) => {
-    const [targetedFavorite, setTargetedFavorite] = useState("");
     const [data, setData] = useState({});
     const { Url, ID } = targetItem;
     const userId = localStorage.getItem("user_id");

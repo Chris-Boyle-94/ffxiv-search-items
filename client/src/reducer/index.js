@@ -1,4 +1,4 @@
-import { CLICK, ITEM_UPDATE, LOGIN, SEARCH } from "../actions";
+import { CLICK, ITEM_UPDATE, SEARCH } from "../actions";
 
 const initialState = {
     searchedItem: "",
