@@ -16,7 +16,7 @@ const ItemDetails = ({ targetItem, click }) => {
     const requestInfo = async () => {
         try {
             const response = await axios.get(
-                `${baseUrl}/items/${ID}?url=${encodedUrl}`
+                `${baseUrl}/items/search?url=${encodedUrl}`
             );
             setData(response.data);
         } catch (err) {

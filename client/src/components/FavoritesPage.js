@@ -1,44 +1,84 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useCallback, useState } from "react";
 import axios from "axios";
 import ItemCard from "./item-components/ItemCard";
 import Spinner from "./Spinner";
+import { connect } from "react-redux";
+import ItemDetails from "./item-components/ItemDetails";
 
-const FavoritesPage = () => {
+const FavoritesPage = ({ clicked }) => {
+    const [userFavorites, setUserFavorites] = useState([]);
+    const [favoritesList, setFavoritesList] = useState([]);
+    const [selectedId, setSelectedId] = useState("");
+
     const baseUrl = process.env.baseUrl || "http://localhost:3333";
     const userId = localStorage.getItem("user_id");
 
-    const favorites = useRef(null);
-    const items = useRef(null);
+    const targetItem = favoritesList.find((item) => {
+        return item.ID === selectedId;
+    });
+
+    const getUserFavorites = useCallback(async () => {
+        try {
+            const response = await axios.get(`${baseUrl}/favorites/${userId}`);
+            setUserFavorites(response.data);
+        } catch (err) {
+            console.log(err);
+        }
+    }, [baseUrl, userId]);
+
+    const getItems = () => {
+        userFavorites.map(async (favorite) => {
+            try {
+                const response = await axios.get(
+                    `${baseUrl}/items/${favorite.item_id}`
+                );
+                setFavoritesList((favoritesList) => [
+                    ...favoritesList,
+                    response.data[0],
+                ]);
+            } catch (err) {
+                console.log(err);
+            }
+        });
+    };
+
     useEffect(() => {
-        axios
-            .get(`${baseUrl}/favorites/${userId}`)
-            .then((res) => {
-                favorites.current = res.data;
-                console.log(favorites.current.item_id);
-                axios
-                    .get(`${baseUrl}/items/${favorites.current.item_id}`)
-                    .then((res) => {
-                        console.log(res);
-                    });
-            })
-            .catch((err) => console.log(err));
+        getUserFavorites();
+        return () => console.log("clean up");
     }, []);
 
-    console.log(favorites.current);
+    useEffect(() => {
+        getItems();
+        return () => console.log("clean up");
+        // eslint-disable-next-line
+    }, [userFavorites]);
+
     return (
         <div>
             <h1>User's favorited items</h1>
-            {favorites.current === null ? (
+            {favoritesList.length < 1 ? (
                 <Spinner />
-            ) : (
-                favorites.current.map((favorite) => {
+            ) : !clicked || targetItem === undefined ? (
+                favoritesList.map((favorite) => {
                     return (
-                        <ItemCard data={favorite} key={favorite.favorite_id} />
+                        <ItemCard
+                            data={favorite}
+                            key={favorite.favorite_id}
+                            setSelectedId={setSelectedId}
+                        />
                     );
                 })
+            ) : (
+                <ItemDetails targetItem={targetItem} />
             )}
         </div>
     );
 };
 
-export default FavoritesPage;
+const mapStateToProps = (state) => {
+    return {
+        clicked: state.clicked,
+    };
+};
+
+export default connect(mapStateToProps)(FavoritesPage);
