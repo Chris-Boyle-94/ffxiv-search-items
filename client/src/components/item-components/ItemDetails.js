@@ -6,10 +6,10 @@ import { connect } from "react-redux";
 import { click } from "../../actions";
 
 const ItemDetails = ({ targetItem, click }) => {
+    const [targetedFavorite, setTargetedFavorite] = useState("");
     const [data, setData] = useState({});
     const { Url, ID } = targetItem;
     const userId = localStorage.getItem("user_id");
-    console.log(userId);
     const encodedUrl = encodeURI(Url);
     const baseUrl = process.env.baseUrl || "http://localhost:3333";
 
@@ -33,10 +33,32 @@ const ItemDetails = ({ targetItem, click }) => {
         click();
     };
 
-    const handleFavorite = async () => {
+    /**
+     for the future: dealing with showing favorite or delete
+
+     const handleGetFavorite = async () => {
+         try {
+             const response = await axios.get(`${baseUrl}/favorites/${userId}`);
+             console.log(response.data);
+         } catch (err) {
+             console.log(err);
+         }
+     };
+     */
+
+    const handlePostFavorite = () => {
         axios.post(`${baseUrl}/favorites/`, {
             user_id: userId,
             item_id: ID,
+        });
+    };
+
+    const handleDeleteFavorite = () => {
+        axios.delete(`${baseUrl}/favorites/`, {
+            data: {
+                user_id: userId,
+                item_id: ID,
+            },
         });
     };
 
@@ -69,7 +91,12 @@ const ItemDetails = ({ targetItem, click }) => {
                         <p>Magical Defense: {data.DefenseMag}</p>
                     ) : null}
                     {data.Description !== "" ? <p>{data.Description}</p> : null}
-                    <button onClick={handleFavorite}>Favorite this item</button>
+                    <button onClick={handlePostFavorite}>
+                        Favorite this item
+                    </button>
+                    <button onClick={handleDeleteFavorite}>
+                        Delete this favorite
+                    </button>
                 </div>
             )}
         </div>
