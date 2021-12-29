@@ -26,9 +26,22 @@ const newFavorite = (favorite) => {
         .returning("*");
 };
 
+const deleteFavorite = (favorite) => {
+    const { item_id, user_id } = favorite;
+
+    return db("favorites")
+        .where({
+            item_id,
+            user_id,
+        })
+        .first()
+        .del();
+};
+
 module.exports = {
     findAll,
     findUserFavorites,
     findFavoriteByIds,
     newFavorite,
+    deleteFavorite,
 };

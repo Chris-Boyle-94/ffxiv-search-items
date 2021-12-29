@@ -1,8 +1,8 @@
 import { useEffect, useCallback, useState } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
 import ItemCard from "./item-components/ItemCard";
 import Spinner from "./Spinner";
-import { connect } from "react-redux";
 import ItemDetails from "./item-components/ItemDetails";
 
 const FavoritesPage = ({ clicked }) => {

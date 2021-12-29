@@ -1,7 +1,10 @@
 const express = require("express");
 
 const router = express.Router();
-const { validateNewFavorite } = require("./favorites-middleware");
+const {
+    validateNewFavorite,
+    validateExistingFavorite,
+} = require("./favorites-middleware");
 const Favorites = require("./favorites-model");
 
 router.get("/", (req, res, next) => {
@@ -37,6 +40,17 @@ router.post("/", validateNewFavorite, async (req, res, next) => {
         if (newFavorite) {
             res.status(201).json({ message: "successfully recorded item" });
         }
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.delete("/", validateExistingFavorite, async (req, res, next) => {
+    const favoriteReq = req.body;
+
+    try {
+        await Favorites.deleteFavorite(favoriteReq);
+        res.status(202).json({ message: "favorite successfully deleted" });
     } catch (err) {
         next(err);
     }
