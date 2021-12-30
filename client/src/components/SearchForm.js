@@ -20,9 +20,9 @@ const SearchForm = ({ search }) => {
     };
 
     return (
-        <div>
+        <div className="searchForm">
             <form onSubmit={handleSubmit}>
-                <label>Item Search: </label>
+                <label className="header__text">Item Search: </label>
                 <input
                     name="search"
                     type="text"

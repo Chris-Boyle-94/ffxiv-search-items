@@ -1,0 +1,26 @@
+@use "../base/vars" as v;
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    &__card {
+        display: flex;
+        background-color: v.$cardBackgroundPrimary;
+        width: 200px;
+        margin: 5px;
+        &:hover {
+            background-color: v.$cardBackgroundHover;
+        }
+    }
+
+    &__label {
+        font-size: v.$S;
+        color: v.$cardTextColor;
+        // @include v.mq(tablet) {
+        //     font-size: v.$S;
+        //     &:hover {
+        //         // font-size: v.$XXL;
+        //     }
+        // }
+    }
+}

@@ -3,8 +3,7 @@ import SearchForm from "./SearchForm";
 
 const HomePage = () => {
     return (
-        <div className="App">
-            <SearchForm />
+        <div>
             <ItemsContainer />
         </div>
     );

@@ -10,13 +10,9 @@ const ItemCard = ({ data, setSelectedId, click }) => {
     };
 
     return (
-        <div>
-            <img
-                src={`https://xivapi.com${Icon}`}
-                alt="Icon"
-                onClick={handleClick}
-            />
-            <p>{Name}</p>
+        <div className="items__card" onClick={handleClick}>
+            <img src={`https://xivapi.com${Icon}`} alt="Icon" />
+            <p className="items__label">{Name}</p>
         </div>
     );
 };
