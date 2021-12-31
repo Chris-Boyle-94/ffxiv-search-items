@@ -1,3 +1,25 @@
+@use "../base/vars" as v;
+
 .searchForm {
-    border: 1px solid white;
+    padding: 10rem auto;
+    width: 50%;
+
+    &__input {
+        border-radius: 0.2rem 0 0 0.2rem;
+        width: 93%;
+    }
+
+    &__button {
+        background-color: v.$darkerGrey;
+        border: 1px solid v.$silver;
+        color: v.$silver;
+        border-radius: 0 0.2rem 0.2rem 0;
+        padding: 0 0.3rem;
+
+        &:hover {
+            background-color: v.$silver;
+            border: 1px solid v.$darkerGrey;
+            color: v.$darkerGrey;
+        }
+    }
 }

@@ -13,6 +13,11 @@
         }
     }
 
+    &__icon {
+        width: 36px;
+        height: 36px;
+    }
+
     &__label {
         font-size: v.$S;
         color: v.$cardTextColor;

@@ -22,15 +22,17 @@ const SearchForm = ({ search }) => {
     return (
         <div className="searchForm">
             <form onSubmit={handleSubmit}>
-                <label className="header__text">Item Search: </label>
                 <input
+                    className="searchForm__input"
                     name="search"
                     type="text"
                     value={formValue}
                     onChange={handleChange}
-                    placeholder="Sword, potion, robe, etc..."
+                    placeholder="Search for items like robe, sword, potion, etc..."
                 />
-                <button type="submit">Search</button>
+                <button className="searchForm__button" type="submit">
+                    Search
+                </button>
             </form>
         </div>
     );
