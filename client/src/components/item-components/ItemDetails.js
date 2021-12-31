@@ -66,34 +66,52 @@ const ItemDetails = ({ targetItem, click }) => {
             {!data.Name ? (
                 <Spinner />
             ) : (
-                <div>
+                <div className="items__details" onClick={handleClick}>
                     <img
+                        className="items__details__icon"
                         src={`https://xivapi.com${data.IconHD}`}
                         alt="Icon"
-                        onClick={handleClick}
                     />
-                    <h2>{data.Name}</h2>
-                    <h4>{data.Name_ja}</h4>
+                    <h2 className="items__details__h2">{data.Name}</h2>
+                    <h4 className="items__details__h4">{data.Name_ja}</h4>
                     {data.ClassJobUse ? (
-                        <p>Class: {data.ClassJobCategory.Name}</p>
+                        <p className="items__details__p">
+                            Class: {data.ClassJobCategory.Name}
+                        </p>
                     ) : null}
                     {data.DamagePhys > 0 ? (
-                        <p>Physical Damage: {data.DamagePhys}</p>
+                        <p className="items__details__p">
+                            Physical Damage: {data.DamagePhys}
+                        </p>
                     ) : null}
                     {data.DamageMag > 0 ? (
-                        <p>Magical Damage: {data.DamageMag}</p>
+                        <p className="items__details__p">
+                            Magical Damage: {data.DamageMag}
+                        </p>
                     ) : null}
                     {data.DefensePhys > 0 ? (
-                        <p>Physical Defense: {data.DefensePhys}</p>
+                        <p className="items__details__p">
+                            Physical Defense: {data.DefensePhys}
+                        </p>
                     ) : null}
                     {data.DefenseMag > 0 ? (
-                        <p>Magical Defense: {data.DefenseMag}</p>
+                        <p className="items__details__p">
+                            Magical Defense: {data.DefenseMag}
+                        </p>
                     ) : null}
-                    {data.Description !== "" ? <p>{data.Description}</p> : null}
-                    <button onClick={handlePostFavorite}>
+                    {data.Description !== "" ? (
+                        <p className="items__details__p">{data.Description}</p>
+                    ) : null}
+                    <button
+                        className="items__button"
+                        onClick={handlePostFavorite}
+                    >
                         Favorite this item
                     </button>
-                    <button onClick={handleDeleteFavorite}>
+                    <button
+                        className="items__button"
+                        onClick={handleDeleteFavorite}
+                    >
                         Delete this favorite
                     </button>
                 </div>

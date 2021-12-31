@@ -18,8 +18,7 @@ const ItemsContainer = ({ searchedItem, items, clicked, updateList }) => {
     });
 
     return (
-        <div>
-            <h1>Items:</h1>
+        <div className="items">
             {!clicked || targetItem === undefined ? (
                 items.map((item) => {
                     return (

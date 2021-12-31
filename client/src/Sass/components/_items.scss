@@ -1,0 +1,90 @@
+@use "../base/vars" as v;
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem 0;
+    margin: 0 7.2rem;
+    // border: 1px solid white;
+
+    &__card {
+        display: flex;
+        background-color: v.$cardBackgroundPrimary;
+        border-radius: 0.2rem 3rem 0.2rem 3rem;
+        width: 25rem;
+        padding: 2rem;
+        padding-bottom: 5rem;
+        margin: 0.5rem;
+
+        &:hover {
+            background-color: v.$lighterGrey;
+        }
+    }
+
+    &__icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    &__label {
+        font-size: v.$S;
+        color: v.$silver;
+        padding: 0 2rem;
+        // @include v.mq(tablet) {
+        //     font-size: v.$S;
+        //     &:hover {
+        //         // font-size: v.$XXL;
+        //     }
+        // }
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: v.$grey;
+        border-radius: 0.2rem 3rem 0.2rem 3rem;
+        width: 45%;
+        margin: 0.5rem 33.5rem;
+        padding: 5rem;
+
+        &__h2 {
+            color: v.$silver;
+            font-size: v.$M;
+            margin: 0.5rem 0;
+        }
+
+        &__h4 {
+            font-size: v.$S;
+            color: v.$silver;
+            margin: 0.5rem 0;
+        }
+
+        &__p {
+            color: v.$silver;
+            margin: 0.5rem 0;
+        }
+
+        &__icon {
+            margin-bottom: 1rem;
+            width: 72px;
+            height: 72px;
+        }
+    }
+
+    &__button {
+        background-color: v.$darkerGrey;
+        border: 1px solid v.$silver;
+        color: v.$silver;
+        border-radius: 0.2rem;
+        padding: 0 0.3rem;
+        margin: 0.5rem 0;
+
+        &:hover {
+            background-color: v.$silver;
+            border: 1px solid v.$darkerGrey;
+            color: v.$darkerGrey;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+@use "../base/vars" as v;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: v.$XS;
+    background-color: v.$grey;
+
+    &__logo-title {
+        width: 19%;
+        padding-left: 1rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        width: v.$L;
+        border-radius: v.$S;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 20%;
+        padding-right: 2rem;
+    }
+
+    &__title {
+        font-size: v.$M;
+        color: v.$silver;
+    }
+
+    &__text {
+        font-size: v.$S;
+        color: v.$silver;
+    }
+}
