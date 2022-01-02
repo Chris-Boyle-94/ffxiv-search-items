@@ -4,6 +4,14 @@
     padding: 10rem auto;
     width: 50%;
 
+    &__form {
+        @include v.mq(tablet) {
+            margin-left: 1rem;
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
     &__input {
         border-radius: 0.2rem 0 0 0.2rem;
         width: 93%;

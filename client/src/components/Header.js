@@ -43,7 +43,7 @@ const Header = ({ click }) => {
                 ) : (
                     <li>
                         <Link className="header__text" to="/cred">
-                            Login/Sign up
+                            Login
                         </Link>
                     </li>
                 )}

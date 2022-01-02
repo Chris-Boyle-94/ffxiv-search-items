@@ -13,9 +13,8 @@ $Roboto: "Roboto", sans-serif;
 
 // SIZES
 $breakpoints: (
-    tablet: 576px,
-    desktop: 768px,
-    wide: 992px,
+    tablet: 768px,
+    mobile: 375px,
 );
 $XXS: 0.5rem;
 $XS: 1rem;
@@ -50,7 +49,7 @@ $cardTextColor: $white;
 @mixin mq($key) {
     // mobile-first media queries: insert key for that think and ABOVE
     $size: map.get($breakpoints, $key);
-    @media only screen and (min-width: $size) {
+    @media only screen and (max-width: $size) {
         @content;
     }
 }
