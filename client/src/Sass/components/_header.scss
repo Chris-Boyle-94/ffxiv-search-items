@@ -4,19 +4,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: v.$XS;
+    padding: v.$XS v.$XXS;
     background-color: v.$grey;
+    @include v.mq(tablet) {
+        flex-direction: column;
+    }
 
     &__logo-title {
         width: 19%;
         padding-left: 1rem;
         display: flex;
         justify-content: space-between;
+        @include v.mq(tablet) {
+            padding-left: 0;
+            width: auto;
+            padding-bottom: v.$S;
+        }
     }
 
     &__logo {
         width: v.$L;
         border-radius: v.$S;
+        @include v.mq(tablet) {
+            margin-right: v.$XS;
+        }
     }
 
     &__container {
@@ -25,6 +36,10 @@
         align-items: center;
         width: 20%;
         padding-right: 2rem;
+        @include v.mq(tablet) {
+            padding-top: v.$XS;
+            width: 50%;
+        }
     }
 
     &__title {
@@ -37,6 +52,9 @@
             color: white;
             cursor: pointer;
         }
+        @include v.mq(tablet) {
+            margin-top: v.$XXS;
+        }
     }
 
     &__text {
@@ -46,6 +64,9 @@
         color: v.$silver;
         &:hover {
             color: white;
+        }
+        @include v.mq(tablet) {
+            padding: 0 v.$S;
         }
     }
 }

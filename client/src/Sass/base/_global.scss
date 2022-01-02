@@ -1,5 +1,9 @@
 @use "../base/vars" as v;
 
+body {
+    overflow-x: hidden;
+}
+
 .global {
     &__container {
         display: "flex";
