@@ -1,5 +1,9 @@
 const Spinner = () => {
-    return <h2>Loading...</h2>;
+    return (
+        <div classname="spinner">
+            <div className="spinner__card"></div>;
+        </div>
+    );
 };
 
 export default Spinner;

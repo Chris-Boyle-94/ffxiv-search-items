@@ -11,18 +11,24 @@ const Credentials = () => {
     };
 
     return (
-        <div>
+        <div className="credentials">
             {!hasAccount ? (
                 <div>
                     <Login />
-                    <button onClick={handleClick}>
+                    <button
+                        className="credentials__button"
+                        onClick={handleClick}
+                    >
                         Don't have an account? Sign up!
                     </button>
                 </div>
             ) : (
                 <div>
                     <SignUp />
-                    <button onClick={handleClick}>
+                    <button
+                        className="credentials__button"
+                        onClick={handleClick}
+                    >
                         Already have an account? Login!
                     </button>
                 </div>

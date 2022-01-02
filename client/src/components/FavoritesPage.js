@@ -45,6 +45,7 @@ const FavoritesPage = ({ clicked }) => {
     useEffect(() => {
         getUserFavorites();
         return () => console.log("clean up");
+        // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
@@ -54,8 +55,7 @@ const FavoritesPage = ({ clicked }) => {
     }, [userFavorites]);
 
     return (
-        <div>
-            <h1>User's favorited items</h1>
+        <div className="items">
             {favoritesList.length < 1 ? (
                 <Spinner />
             ) : !clicked || targetItem === undefined ? (
