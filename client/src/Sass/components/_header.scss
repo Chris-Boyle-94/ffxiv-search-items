@@ -53,7 +53,7 @@
             cursor: pointer;
         }
         @include v.mq(tablet) {
-            margin-top: v.$XXS;
+            margin-top: v.$XS;
         }
     }
 
