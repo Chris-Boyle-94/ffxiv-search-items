@@ -1,16 +1,12 @@
 @use "../base/vars" as v;
 
-body {
+* {
     overflow-x: hidden;
 }
 
-.global {
-    &__container {
-        display: "flex";
-        flex-direction: "column";
-        padding: v.$M v.$L;
-        // background-color: v.$cardBackgroundPrimary;
-        // box-shadow: v.$shadow;
-        border-radius: "2px";
-    }
+body {
+    background-color: v.$grey;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
