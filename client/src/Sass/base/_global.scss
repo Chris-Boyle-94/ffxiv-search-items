@@ -1,7 +1,10 @@
 @use "../base/vars" as v;
 
-body {
+* {
     overflow-x: hidden;
+}
+
+body {
     background-color: v.$darkerGrey;
     width: 100%;
     margin: 0;
