@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Credentials from "./components/credentials-components/Credentials";
-import HomePage from "./components/HomePage";
 import FavoritesPage from "./components/FavoritesPage";
 import Header from "./components/Header";
+import ItemsContainer from "./components/item-components/ItemsContainer";
 
 function App() {
     return (
@@ -12,7 +12,7 @@ function App() {
                 <Switch>
                     <Route path="/favorites" component={FavoritesPage} />
                     <Route path="/cred" component={Credentials} />
-                    <Route exact path="/" component={HomePage} />
+                    <Route exact path="/" component={ItemsContainer} />
                 </Switch>
             </div>
         </Router>

@@ -2,44 +2,28 @@
 
 .header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: v.$XS v.$XXS;
-    background-color: v.$grey;
-    @include v.mq(tablet) {
-        flex-direction: column;
-    }
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 
     &__logo-title {
-        width: 19%;
-        padding-left: 1rem;
+        margin: 0 0.5rem;
+        margin-top: 1rem;
         display: flex;
-        justify-content: space-between;
-        @include v.mq(tablet) {
-            padding-left: 0;
-            width: auto;
-            padding-bottom: v.$S;
-        }
+        justify-content: space-around;
+        width: auto;
     }
 
     &__logo {
         width: v.$L;
         border-radius: v.$S;
-        @include v.mq(tablet) {
-            margin-right: v.$XS;
-        }
+        margin: auto 2rem;
     }
 
     &__container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 20%;
-        padding-right: 2rem;
-        @include v.mq(tablet) {
-            padding-top: v.$XS;
-            width: 50%;
-        }
     }
 
     &__title {
@@ -48,25 +32,21 @@
         font-style: italic;
         font-weight: bold;
         color: v.$silver;
+        margin-top: 0.2rem;
         &:hover {
             color: white;
             cursor: pointer;
         }
-        @include v.mq(tablet) {
-            margin-top: v.$XS;
-        }
     }
 
     &__text {
+        margin: 1rem;
         font-family: v.$Nunito;
         font-weight: bold;
         font-size: v.$S;
         color: v.$silver;
         &:hover {
             color: white;
-        }
-        @include v.mq(tablet) {
-            padding: 0 v.$S;
         }
     }
 }
