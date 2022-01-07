@@ -2,21 +2,23 @@
 
 .spinner {
     display: flex;
-    // flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
     padding: 0.5rem 0;
-    margin: 0 7.2rem;
+    background-color: v.$grey;
+    height: 100vh;
 
     &__card {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: v.$grey;
+        background-color: v.$darkerGrey;
         border-radius: 0.2rem 3rem 0.2rem 3rem;
-        width: 54.7%;
+        width: 95%;
         height: 52vh;
         margin: 0.5rem 30.5rem;
-        padding: 5rem;
+        padding: 10rem;
         @include v.mq(tablet) {
             margin: 0.5rem 0rem;
             width: 100%;
