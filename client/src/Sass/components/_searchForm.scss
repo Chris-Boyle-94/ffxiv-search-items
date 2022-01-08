@@ -6,9 +6,22 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+
+    &__form {
+        @include v.mq(tablet) {
+            width: 85%;
+            align-self: center;
+            // padding: 0 3.5rem;
+        }
+    }
 
     &__input {
         border-radius: 0.2rem 0 0 0.2rem;
+        @include v.mq(tablet) {
+            width: 75%;
+            margin-left: 7%;
+        }
     }
 
     &__button {

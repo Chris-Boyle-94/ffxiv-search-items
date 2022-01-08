@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import Spinner from "../Spinner";
 import axios from "axios";
 import { connect } from "react-redux";
 import { click } from "../../actions";
@@ -63,9 +62,7 @@ const ItemDetails = ({ targetItem, click }) => {
 
     return (
         <div>
-            {!data.Name ? (
-                <Spinner />
-            ) : (
+            {!data.Name ? null : (
                 <div className="items__details" onClick={handleClick}>
                     <img
                         className="items__details__icon"

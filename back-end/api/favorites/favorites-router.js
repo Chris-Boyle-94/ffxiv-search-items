@@ -36,9 +36,13 @@ router.post("/", validateNewFavorite, async (req, res, next) => {
     const favoriteReq = req.body;
 
     try {
-        const newFavorite = await Favorites.newFavorite(favoriteReq);
-        if (newFavorite) {
-            res.status(201).json({ message: "successfully recorded item" });
+        if (favoriteReq.body.user_id != null) {
+            const newFavorite = await Favorites.newFavorite(favoriteReq);
+            if (newFavorite) {
+                res.status(201).json({ message: "successfully recorded item" });
+            }
+        } else {
+            res.status(400).json({ message: "not logged in" });
         }
     } catch (err) {
         next(err);

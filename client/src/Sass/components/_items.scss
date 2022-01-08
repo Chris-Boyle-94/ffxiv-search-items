@@ -6,7 +6,11 @@
     justify-content: center;
     align-items: flex-start;
     padding: 0.5rem 0;
+    margin-top: 14.5rem;
     background-color: v.$grey;
+    @include v.mq(tablet) {
+        margin-top: 16.2rem;
+    }
 
     &__card {
         display: flex;
@@ -16,6 +20,7 @@
         padding: 2rem;
         padding-bottom: 5rem;
         margin: 0.5rem;
+        box-shadow: 2px 2px 5px;
 
         &:hover {
             background-color: v.$lighterGrey;
@@ -49,32 +54,45 @@
         align-items: center;
         background-color: v.$darkerGrey;
         border-radius: 0.2rem 3rem 0.2rem 3rem;
-        margin: 0.5rem;
         width: 95%;
-        padding: 5rem;
+        margin: 0.5rem;
+        padding: 5rem 7rem;
+        box-shadow: 2px 2px 5px;
 
         &__h2 {
             font-family: v.$Nunito;
             font-weight: bold;
             color: v.$silver;
-            font-size: v.$M;
+            font-size: v.$S;
             margin-top: 0.5rem;
+            padding: 0 2rem;
+            text-align: center;
+            @include v.mq(tablet) {
+                font-size: v.$M;
+            }
         }
 
         &__h4 {
             font-family: v.$Nunito;
             font-weight: bold;
-            font-size: v.$S;
+            font-size: v.$XS;
             color: v.$silver;
             margin: 0.5rem 0;
+            padding: 0 2rem;
+            text-align: center;
+            @include v.mq(tablet) {
+                font-size: 2rem;
+            }
         }
 
         &__p {
             font-family: v.$Nunito;
             font-style: italic;
-            font-size: 1.25rem;
+            font-size: v.$S;
             color: v.$silver;
             margin: 0.5rem 0;
+            padding: 0 2rem;
+            text-align: center;
         }
 
         &__icon {
