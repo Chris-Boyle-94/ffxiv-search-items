@@ -22,6 +22,10 @@
             width: 75%;
             margin-left: 7%;
         }
+
+        @include v.mq(laptop) {
+            width: 60%;
+        }
     }
 
     &__button {
