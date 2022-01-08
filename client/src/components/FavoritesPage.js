@@ -2,7 +2,6 @@ import { useEffect, useCallback, useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import ItemCard from "./item-components/ItemCard";
-import Spinner from "./Spinner";
 import ItemDetails from "./item-components/ItemDetails";
 
 const FavoritesPage = ({ clicked }) => {
@@ -56,9 +55,8 @@ const FavoritesPage = ({ clicked }) => {
 
     return (
         <div className="items">
-            {favoritesList.length < 1 ? (
-                <Spinner />
-            ) : !clicked || targetItem === undefined ? (
+            {favoritesList.length < 1 ? null : !clicked ||
+              targetItem === undefined ? (
                 favoritesList.map((favorite) => {
                     return (
                         <ItemCard
