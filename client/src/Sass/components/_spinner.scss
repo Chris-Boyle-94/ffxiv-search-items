@@ -19,6 +19,8 @@
         height: 52vh;
         margin: 0.5rem 30.5rem;
         padding: 10rem;
+        box-shadow: 2px 2px 5px;
+
         @include v.mq(tablet) {
             margin: 0.5rem 0rem;
             width: 100%;

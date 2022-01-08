@@ -3,12 +3,23 @@
 .searchForm {
     margin: 2rem auto;
     margin-bottom: 1.5rem;
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: center;
+    align-items: center;
+
+    &__form {
+        @include v.mq(tablet) {
+            width: 100%;
+            padding: 0 3.5rem;
+        }
+    }
 
     &__input {
         border-radius: 0.2rem 0 0 0.2rem;
+        @include v.mq(tablet) {
+            width: 75%;
+        }
     }
 
     &__button {
