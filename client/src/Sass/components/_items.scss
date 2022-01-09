@@ -12,6 +12,10 @@
         margin-top: 16.2rem;
     }
 
+    @include v.mq(laptop) {
+        margin-top: 11.5rem;
+    }
+
     &__card {
         display: flex;
         background-color: v.$darkerGrey;
@@ -21,6 +25,9 @@
         padding-bottom: 5rem;
         margin: 0.5rem;
         box-shadow: 2px 2px 5px;
+        @include v.mq(laptop) {
+            width: 22rem;
+        }
 
         &:hover {
             background-color: v.$lighterGrey;

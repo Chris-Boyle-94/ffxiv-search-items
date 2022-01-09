@@ -12,7 +12,11 @@
         @include v.mq(tablet) {
             width: 85%;
             align-self: center;
-            // padding: 0 3.5rem;
+        }
+        @include v.mq(laptop) {
+            width: 100%;
+            align-self: center;
+            margin-top: 0.5rem;
         }
     }
 
@@ -24,7 +28,7 @@
         }
 
         @include v.mq(laptop) {
-            width: 60%;
+            width: 68%;
         }
     }
 
