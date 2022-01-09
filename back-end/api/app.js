@@ -17,7 +17,7 @@ server.use("/items", itemsRouter);
 server.use("/users", usersRouter);
 server.use("/favorites", favoritesRouter);
 
-server.use(express.static(path.resolve(__dirname, "./client/build")));
+server.use(express.static(path.resolve(__dirname, "../../client/build")));
 
 server.get("/", (req, res) => {
     res.json({ message: "api is up and running" });
