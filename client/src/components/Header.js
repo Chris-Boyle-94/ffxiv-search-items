@@ -28,31 +28,44 @@ const Header = ({ click }) => {
                 </h1>
             </div>
             <SearchForm />
-            <nav className="header__container">
-                <li>
-                    <Link className="header__text" to="/">
-                        Home
-                    </Link>
-                </li>
-                {token ? (
+            {token ? (
+                <nav className="header__container">
+                    <li>
+                        <Link className="header__text" to="/">
+                            Home
+                        </Link>
+                    </li>
+
                     <li>
                         <Link className="header__text" to="/favorites">
                             Favorites
                         </Link>
                     </li>
-                ) : (
                     <li>
-                        <Link className="header__text" to="/cred">
+                        <Link className="header__text" to="/" onClick={logout}>
+                            Logout
+                        </Link>
+                    </li>
+                </nav>
+            ) : (
+                <nav className="header__container">
+                    <li>
+                        <Link className="header__text" to="/">
+                            Home
+                        </Link>
+                    </li>
+                    <li>
+                        <Link className="header__text" to="/login">
                             Login
                         </Link>
                     </li>
-                )}
-                <li>
-                    <Link className="header__text" to="/" onClick={logout}>
-                        Logout
-                    </Link>
-                </li>
-            </nav>
+                    <li>
+                        <Link className="header__text" to="/sign-up">
+                            Sign up
+                        </Link>
+                    </li>
+                </nav>
+            )}
         </div>
     );
 };

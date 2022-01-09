@@ -108,6 +108,14 @@
             height: 72px;
         }
 
+        &__buttons {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
         &:hover {
             background-color: v.$lighterGrey;
             cursor: pointer;

@@ -99,18 +99,22 @@ const ItemDetails = ({ targetItem, click }) => {
                     {data.Description !== "" ? (
                         <p className="items__details__p">{data.Description}</p>
                     ) : null}
-                    <button
-                        className="items__button"
-                        onClick={handlePostFavorite}
-                    >
-                        Favorite this item
-                    </button>
-                    <button
-                        className="items__button"
-                        onClick={handleDeleteFavorite}
-                    >
-                        Delete this favorite
-                    </button>
+                    {userId && (
+                        <div className="items__details__buttons">
+                            <button
+                                className="items__button"
+                                onClick={handlePostFavorite}
+                            >
+                                Favorite this item
+                            </button>
+                            <button
+                                className="items__button"
+                                onClick={handleDeleteFavorite}
+                            >
+                                Delete this favorite
+                            </button>
+                        </div>
+                    )}
                 </div>
             )}
         </div>
