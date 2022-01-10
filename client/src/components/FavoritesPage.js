@@ -10,7 +10,9 @@ const FavoritesPage = ({ clicked, setUserFavorites, userFavorites }) => {
     const [favoritesList, setFavoritesList] = useState([]);
     const [selectedId, setSelectedId] = useState("");
 
-    const baseUrl = process.env.baseUrl || "http://localhost:3333";
+    const development = "http://localhost:3333";
+    const production = "https://ffxiv-search-app.herokuapp.com/";
+    const baseUrl = process.env.NODE_ENV ? production : development;
     const userId = localStorage.getItem("user_id");
 
     const targetItem = favoritesList.find((item) => {
