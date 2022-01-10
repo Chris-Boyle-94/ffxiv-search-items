@@ -4,7 +4,7 @@
   "icons": [
     {
       "src": "moogle.jpg",
-      "type": "image/jpg",
+      "type": "icon",
       "sizes": "192x192"
     }
   ],
