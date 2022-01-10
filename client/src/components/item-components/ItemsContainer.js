@@ -13,9 +13,11 @@ const ItemsContainer = ({ searchedItem, items, clicked, updateList }) => {
         //eslint-disable-next-line
     }, [searchedItem]);
 
-    const targetItem = items.find((item) => {
-        return item.ID === selectedId;
-    });
+    if (Array.isArray(items)) {
+        const targetItem = items.find((item) => {
+            return item.ID === selectedId;
+        });
+    }
 
     return (
         <div className="items">
