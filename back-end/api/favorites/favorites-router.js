@@ -22,11 +22,23 @@ router.get("/:id", async (req, res, next) => {
 
     try {
         const userFavorites = await Favorites.findUserFavorites(id);
+
         if (userFavorites) {
             res.status(200).json(userFavorites);
         } else {
             next();
         }
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.post("/specific", async (req, res, next) => {
+    const favorite = req.body;
+
+    try {
+        const specificFavorite = await Favorites.findFavoriteByIds(favorite);
+        res.status(200).json(specificFavorite);
     } catch (err) {
         next(err);
     }

@@ -42,9 +42,6 @@ const FavoritesPage = ({ clicked, setUserFavorites, userFavorites }) => {
         });
     };
 
-    console.log(userFavorites);
-    console.log(favoritesList);
-
     useEffect(() => {
         getUserFavorites();
         return () => setUserFavorites([]);
@@ -53,8 +50,8 @@ const FavoritesPage = ({ clicked, setUserFavorites, userFavorites }) => {
 
     useEffect(() => {
         getItems();
-        // eslint-disable-next-line
         return () => setFavoritesList([]);
+        // eslint-disable-next-line
     }, [userFavorites]);
 
     return (

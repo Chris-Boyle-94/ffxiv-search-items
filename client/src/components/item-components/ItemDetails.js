@@ -28,14 +28,24 @@ const ItemDetails = ({
         }
     };
 
-    const favorite = userFavorites.find((item) => {
-        return ID === item.item_id;
-    });
+    const handleHasFavorite = async () => {
+        try {
+            const response = await axios.post(`${baseUrl}/favorites/specific`, {
+                user_id: userId,
+                item_id: ID,
+            });
 
-    console.log(userFavorites);
+            if (response.data.length > 0) {
+                setHasFavorite(true);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     useEffect(() => {
         requestInfo();
+        handleHasFavorite();
         //eslint-disable-next-line
     }, []);
 
@@ -57,11 +67,6 @@ const ItemDetails = ({
                 item_id: ID,
             },
         });
-        setUserFavorites(
-            userFavorites.filter((userFavorite) => {
-                return favorite !== userFavorite;
-            })
-        );
     };
 
     return (
@@ -105,18 +110,21 @@ const ItemDetails = ({
                     )}
                     {userId && (
                         <div className="items__details__buttons">
-                            <button
-                                className="items__button"
-                                onClick={handlePostFavorite}
-                            >
-                                Favorite this item
-                            </button>
-                            <button
-                                className="items__button"
-                                onClick={handleDeleteFavorite}
-                            >
-                                Delete this favorite
-                            </button>
+                            {hasFavorite ? (
+                                <button
+                                    className="items__button"
+                                    onClick={handleDeleteFavorite}
+                                >
+                                    Delete this favorite
+                                </button>
+                            ) : (
+                                <button
+                                    className="items__button"
+                                    onClick={handlePostFavorite}
+                                >
+                                    Favorite this item
+                                </button>
+                            )}
                         </div>
                     )}
                 </div>
