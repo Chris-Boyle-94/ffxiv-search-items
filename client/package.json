@@ -16,11 +16,13 @@
     "redux": "^4.1.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
-    "web-vitals": "^2.1.2"
+    "web-vitals": "^2.1.2",
+    "webpack": "^5.65.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "webpack",
+    "heroku-postbuild": "webpack --config webpack.config.prod.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
