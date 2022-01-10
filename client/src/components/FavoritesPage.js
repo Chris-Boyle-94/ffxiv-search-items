@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import ItemCard from "./item-components/ItemCard";
 import ItemDetails from "./item-components/ItemDetails";
 import { setUserFavorites } from "../actions";
+import { v4 as uuidv4 } from "uuid";
 
 const FavoritesPage = ({ clicked, setUserFavorites, userFavorites }) => {
     const [favoritesList, setFavoritesList] = useState([]);
@@ -62,7 +63,7 @@ const FavoritesPage = ({ clicked, setUserFavorites, userFavorites }) => {
                     return (
                         <ItemCard
                             data={favorite}
-                            key={favorite.favorite_id}
+                            key={uuidv4()}
                             setSelectedId={setSelectedId}
                         />
                     );

@@ -4,6 +4,8 @@
   "description": "This application uses FFXIV's API to search for items that exist in the game. ",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "test": "npx jest",
     "make": "npx knex --knexfile config/knexfile.js migrate:make",
     "rollback": "npx knex --knexfile config/knexfile.js migrate:rollback",
