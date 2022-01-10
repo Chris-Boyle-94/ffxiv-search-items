@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "server": "nodemon",
     "test": "npx jest",
     "make": "npx knex --knexfile config/knexfile.js migrate:make",

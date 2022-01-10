@@ -3,6 +3,8 @@ import axios from "axios";
 export const SEARCH = "SEARCH";
 export const ITEM_UPDATE = "ITEM_UPDATE";
 export const CLICK = "CLICK";
+export const IS_LOGGED_IN = "IS_LOGGED_IN";
+export const USER_FAVORITES = "USER_FAVORITES";
 
 const baseUrl = process.env.baseUrl || "http://localhost:3333";
 
@@ -19,4 +21,12 @@ export const updateList = (search) => {
 
 export const click = () => {
     return { type: CLICK };
+};
+
+export const setLoggedIn = (bool) => {
+    return { type: IS_LOGGED_IN, payload: bool };
+};
+
+export const setUserFavorites = (favorites) => {
+    return { type: USER_FAVORITES, payload: favorites };
 };

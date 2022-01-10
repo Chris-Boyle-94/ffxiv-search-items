@@ -22,6 +22,7 @@ router.get("/:id", async (req, res, next) => {
 
     try {
         const userFavorites = await Favorites.findUserFavorites(id);
+
         if (userFavorites) {
             res.status(200).json(userFavorites);
         } else {
@@ -32,17 +33,24 @@ router.get("/:id", async (req, res, next) => {
     }
 });
 
+router.post("/specific", async (req, res, next) => {
+    const favorite = req.body;
+
+    try {
+        const specificFavorite = await Favorites.findFavoriteByIds(favorite);
+        res.status(200).json(specificFavorite);
+    } catch (err) {
+        next(err);
+    }
+});
+
 router.post("/", validateNewFavorite, async (req, res, next) => {
     const favoriteReq = req.body;
 
     try {
-        if (favoriteReq.body.user_id != null) {
-            const newFavorite = await Favorites.newFavorite(favoriteReq);
-            if (newFavorite) {
-                res.status(201).json({ message: "successfully recorded item" });
-            }
-        } else {
-            res.status(400).json({ message: "not logged in" });
+        const newFavorite = await Favorites.newFavorite(favoriteReq);
+        if (newFavorite) {
+            res.status(201).json({ message: "successfully recorded item" });
         }
     } catch (err) {
         next(err);

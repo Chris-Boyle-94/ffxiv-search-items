@@ -3,8 +3,8 @@ import { useState } from "react";
 import SignUp from "./SignUp";
 import Login from "./Login";
 
-const Credentials = () => {
-    const [hasAccount, setHasAccount] = useState(false);
+const Credentials = ({ account }) => {
+    const [hasAccount, setHasAccount] = useState(account);
 
     const handleClick = (e) => {
         setHasAccount(!hasAccount);
@@ -12,7 +12,7 @@ const Credentials = () => {
 
     return (
         <div className="credentials">
-            {!hasAccount ? (
+            {hasAccount ? (
                 <div>
                     <Login />
                     <button

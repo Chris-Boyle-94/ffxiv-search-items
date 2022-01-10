@@ -1,17 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import SearchForm from "./SearchForm";
 import { connect } from "react-redux";
-import { click } from "../actions";
-import { useHistory } from "react-router-dom";
+import { click, setLoggedIn } from "../actions";
 import moogle from "../imgs/moogle.jpg";
 
-const Header = ({ click }) => {
-    const token = localStorage.getItem("token");
+const Header = ({ click, setLoggedIn, isLoggedIn }) => {
     const history = useHistory();
+    const token = localStorage.getItem("token");
 
     const logout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user_id");
+        if (isLoggedIn) {
+            setLoggedIn(false);
+        } else {
+            setLoggedIn(true);
+            setLoggedIn(false);
+        }
     };
 
     const handleClick = () => {
@@ -28,33 +33,52 @@ const Header = ({ click }) => {
                 </h1>
             </div>
             <SearchForm />
-            <nav className="header__container">
-                <li>
-                    <Link className="header__text" to="/">
-                        Home
-                    </Link>
-                </li>
-                {token ? (
+            {isLoggedIn || token ? (
+                <nav className="header__container">
+                    <li>
+                        <Link className="header__text" to="/">
+                            Home
+                        </Link>
+                    </li>
+
                     <li>
                         <Link className="header__text" to="/favorites">
                             Favorites
                         </Link>
                     </li>
-                ) : (
                     <li>
-                        <Link className="header__text" to="/cred">
+                        <Link className="header__text" to="/" onClick={logout}>
+                            Logout
+                        </Link>
+                    </li>
+                </nav>
+            ) : (
+                <nav className="header__container">
+                    <li>
+                        <Link className="header__text" to="/">
+                            Home
+                        </Link>
+                    </li>
+                    <li>
+                        <Link className="header__text" to="/login">
                             Login
                         </Link>
                     </li>
-                )}
-                <li>
-                    <Link className="header__text" to="/" onClick={logout}>
-                        Logout
-                    </Link>
-                </li>
-            </nav>
+                    <li>
+                        <Link className="header__text" to="/sign-up">
+                            Sign up
+                        </Link>
+                    </li>
+                </nav>
+            )}
         </div>
     );
 };
 
-export default connect(null, { click })(Header);
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: state.isLoggedIn,
+    };
+};
+
+export default connect(mapStateToProps, { click, setLoggedIn })(Header);

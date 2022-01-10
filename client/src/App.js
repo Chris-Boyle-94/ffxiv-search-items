@@ -11,7 +11,18 @@ function App() {
                 <Header />
                 <Switch>
                     <Route path="/favorites" component={FavoritesPage} />
-                    <Route path="/cred" component={Credentials} />
+                    <Route
+                        path="/login"
+                        render={(props) => (
+                            <Credentials {...props} account={true} />
+                        )}
+                    />
+                    <Route
+                        path="/sign-up"
+                        render={(props) => (
+                            <Credentials {...props} account={false} />
+                        )}
+                    />
                     <Route exact path="/" component={ItemsContainer} />
                 </Switch>
             </div>
