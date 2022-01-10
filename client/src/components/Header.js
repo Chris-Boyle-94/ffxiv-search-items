@@ -1,17 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import SearchForm from "./SearchForm";
 import { connect } from "react-redux";
-import { click } from "../actions";
-import { useHistory } from "react-router-dom";
+import { click, setLoggedIn } from "../actions";
 import moogle from "../imgs/moogle.jpg";
 
-const Header = ({ click }) => {
-    const token = localStorage.getItem("token");
+const Header = ({ click, setLoggedIn, isLoggedIn }) => {
     const history = useHistory();
 
     const logout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user_id");
+        setLoggedIn(false);
     };
 
     const handleClick = () => {
@@ -28,7 +27,7 @@ const Header = ({ click }) => {
                 </h1>
             </div>
             <SearchForm />
-            {token ? (
+            {isLoggedIn ? (
                 <nav className="header__container">
                     <li>
                         <Link className="header__text" to="/">
@@ -70,4 +69,10 @@ const Header = ({ click }) => {
     );
 };
 
-export default connect(null, { click })(Header);
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: state.isLoggedIn,
+    };
+};
+
+export default connect(mapStateToProps, { click, setLoggedIn })(Header);

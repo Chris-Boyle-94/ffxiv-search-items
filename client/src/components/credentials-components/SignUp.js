@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { setLoggedIn } from "../../actions";
 
 const baseUrl = process.env.baseUrl || "http://localhost:3333";
 const initialValues = {
@@ -8,7 +10,7 @@ const initialValues = {
     password: "",
 };
 
-const SignUp = () => {
+const SignUp = ({ setLoggedIn }) => {
     const [formValues, setFormValues] = useState(initialValues);
     const history = useHistory();
 
@@ -34,6 +36,7 @@ const SignUp = () => {
                 );
                 localStorage.setItem("token", login.data.token);
                 localStorage.setItem("user_id", login.data.user_id);
+                setLoggedIn(true);
                 history.push("/");
             }
         } catch (err) {
@@ -70,4 +73,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default connect(null, { setLoggedIn })(SignUp);
