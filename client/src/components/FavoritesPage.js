@@ -3,9 +3,9 @@ import axios from "axios";
 import { connect } from "react-redux";
 import ItemCard from "./item-components/ItemCard";
 import ItemDetails from "./item-components/ItemDetails";
+import { setUserFavorites } from "../actions";
 
-const FavoritesPage = ({ clicked }) => {
-    const [userFavorites, setUserFavorites] = useState([]);
+const FavoritesPage = ({ clicked, setUserFavorites, userFavorites }) => {
     const [favoritesList, setFavoritesList] = useState([]);
     const [selectedId, setSelectedId] = useState("");
 
@@ -23,6 +23,7 @@ const FavoritesPage = ({ clicked }) => {
         } catch (err) {
             console.log(err);
         }
+        //eslint-disable-next-line
     }, [baseUrl, userId]);
 
     const getItems = () => {
@@ -41,16 +42,19 @@ const FavoritesPage = ({ clicked }) => {
         });
     };
 
+    console.log(userFavorites);
+    console.log(favoritesList);
+
     useEffect(() => {
         getUserFavorites();
-        return () => console.log("clean up");
+        return () => setUserFavorites([]);
         // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
         getItems();
-        return () => console.log("clean up");
         // eslint-disable-next-line
+        return () => setFavoritesList([]);
     }, [userFavorites]);
 
     return (
@@ -76,7 +80,8 @@ const FavoritesPage = ({ clicked }) => {
 const mapStateToProps = (state) => {
     return {
         clicked: state.clicked,
+        userFavorites: state.userFavorites,
     };
 };
 
-export default connect(mapStateToProps)(FavoritesPage);
+export default connect(mapStateToProps, { setUserFavorites })(FavoritesPage);

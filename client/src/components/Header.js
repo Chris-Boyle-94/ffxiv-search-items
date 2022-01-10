@@ -6,11 +6,17 @@ import moogle from "../imgs/moogle.jpg";
 
 const Header = ({ click, setLoggedIn, isLoggedIn }) => {
     const history = useHistory();
+    const token = localStorage.getItem("token");
 
     const logout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user_id");
-        setLoggedIn(false);
+        if (isLoggedIn) {
+            setLoggedIn(false);
+        } else {
+            setLoggedIn(true);
+            setLoggedIn(false);
+        }
     };
 
     const handleClick = () => {
@@ -27,7 +33,7 @@ const Header = ({ click, setLoggedIn, isLoggedIn }) => {
                 </h1>
             </div>
             <SearchForm />
-            {isLoggedIn ? (
+            {isLoggedIn || token ? (
                 <nav className="header__container">
                     <li>
                         <Link className="header__text" to="/">

@@ -1,10 +1,17 @@
-import { CLICK, IS_LOGGED_IN, ITEM_UPDATE, SEARCH } from "../actions";
+import {
+    CLICK,
+    IS_LOGGED_IN,
+    USER_FAVORITES,
+    ITEM_UPDATE,
+    SEARCH,
+} from "../actions";
 
 const initialState = {
     searchedItem: "",
     items: [],
     clicked: false,
     isLoggedIn: false,
+    userFavorites: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -28,6 +35,11 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoggedIn: action.payload,
+            };
+        case USER_FAVORITES:
+            return {
+                ...state,
+                userFavorites: action.payload,
             };
         default:
             return state;
