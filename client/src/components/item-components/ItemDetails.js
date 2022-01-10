@@ -28,6 +28,10 @@ const ItemDetails = ({
         }
     };
 
+    const favorite = userFavorites.find((item) => {
+        return ID === item.item_id;
+    });
+
     const handleHasFavorite = async () => {
         try {
             const response = await axios.post(`${baseUrl}/favorites/specific`, {
@@ -67,6 +71,11 @@ const ItemDetails = ({
                 item_id: ID,
             },
         });
+        setUserFavorites(
+            userFavorites.filter((userFavorite) => {
+                return favorite !== userFavorite;
+            })
+        );
     };
 
     return (
