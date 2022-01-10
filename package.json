@@ -1,0 +1,10 @@
+{
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "heroku-postbuild": "cd client && npm install && npm run build"
+    },
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
