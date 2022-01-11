@@ -10,7 +10,7 @@ const favoritesRouter = require("./favorites/favorites-router");
 const server = express();
 
 server.use(express.json());
-server.use(cors());
+// server.use(cors());
 server.use(helmet());
 
 server.use("/items", itemsRouter);
