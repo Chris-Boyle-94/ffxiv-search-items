@@ -9,7 +9,11 @@ const favoritesRouter = require("./favorites/favorites-router");
 const server = express();
 
 server.use(express.json());
-server.use(helmet());
+server.use(
+    helmet({
+        contentSecurityPolicy: false,
+    })
+);
 
 server.use("/items", itemsRouter);
 server.use("/users", usersRouter);
