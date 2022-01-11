@@ -18,6 +18,10 @@
     "rollbackh": "heroku run knex --knexfile config/knexfile.js migrate:rollback -a ffxiv-search-app",
     "databaseh": "heroku pg:psql -a ffxiv-search-app"
   },
+  "engines": {
+    "node": "16.6.1",
+    "npm": "8.1.4"
+  },
   "author": "Chris Boyle",
   "license": "ISC",
   "devDependencies": {
