@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 const helmet = require("helmet");
 
 const itemsRouter = require("./items/items-router");
@@ -9,6 +10,7 @@ const favoritesRouter = require("./favorites/favorites-router");
 const server = express();
 
 server.use(express.json());
+server.use(cors());
 server.use(
     helmet({
         contentSecurityPolicy: false,
