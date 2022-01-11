@@ -13,7 +13,10 @@
     "make_seed": "npx knex --knexfile config/knexfile.js seed:make",
     "seed": "npx knex --knexfile config/knexfile.js seed:run",
     "up": "npx knex --knexfile config/knexfile.js migrate:up",
-    "down": "npx knex --knexfile config/knexfile.js migrate:down"
+    "down": "npx knex --knexfile config/knexfile.js migrate:down",
+    "migrateh": "heroku run knex --knexfile config/knexfile.js migrate:latest -a ffxiv-search-app",
+    "rollbackh": "heroku run knex --knexfile config/knexfile.js migrate:rollback -a ffxiv-search-app",
+    "databaseh": "heroku pg:psql -a ffxiv-search-app"
   },
   "author": "Chris Boyle",
   "license": "ISC",
