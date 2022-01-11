@@ -16,10 +16,14 @@
     "redux": "^4.1.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
-    "web-vitals": "^2.1.2"
+    "sass": "^1.47.0",
+    "uuid": "^8.3.2",
+    "web-vitals": "^2.1.2",
+    "webpack-cli": "^4.9.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -41,8 +45,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "sass": "^1.45.1"
   }
 }

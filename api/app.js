@@ -11,13 +11,22 @@ const server = express();
 
 server.use(express.json());
 server.use(cors());
-server.use(helmet());
+server.use(
+    helmet({
+        contentSecurityPolicy: false,
+    })
+);
 
 server.use("/items", itemsRouter);
 server.use("/users", usersRouter);
 server.use("/favorites", favoritesRouter);
 
-server.use(express.static(path.resolve(__dirname, "../../client/build")));
+if (process.env.NODE_ENV === "production") {
+    server.use(express.static(path.resolve(__dirname, "../client/build")));
+    server.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "../client/public", "index.html"));
+    });
+}
 
 server.get("/", (req, res) => {
     res.json({ message: "api is up and running" });

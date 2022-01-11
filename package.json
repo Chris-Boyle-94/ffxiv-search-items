@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node index.js",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "server": "nodemon",
     "test": "npx jest",
     "make": "npx knex --knexfile config/knexfile.js migrate:make",
     "rollback": "npx knex --knexfile config/knexfile.js migrate:rollback",
@@ -14,7 +13,14 @@
     "make_seed": "npx knex --knexfile config/knexfile.js seed:make",
     "seed": "npx knex --knexfile config/knexfile.js seed:run",
     "up": "npx knex --knexfile config/knexfile.js migrate:up",
-    "down": "npx knex --knexfile config/knexfile.js migrate:down"
+    "down": "npx knex --knexfile config/knexfile.js migrate:down",
+    "migrateh": "heroku run knex --knexfile config/knexfile.js migrate:latest -a ffxiv-search-app",
+    "rollbackh": "heroku run knex --knexfile config/knexfile.js migrate:rollback -a ffxiv-search-app",
+    "databaseh": "heroku pg:psql -a ffxiv-search-app"
+  },
+  "engines": {
+    "node": "16.6.1",
+    "npm": "8.1.4"
   },
   "author": "Chris Boyle",
   "license": "ISC",

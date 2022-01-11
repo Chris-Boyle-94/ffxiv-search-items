@@ -6,7 +6,9 @@ export const CLICK = "CLICK";
 export const IS_LOGGED_IN = "IS_LOGGED_IN";
 export const USER_FAVORITES = "USER_FAVORITES";
 
-const baseUrl = process.env.baseUrl || "http://localhost:3333";
+const development = "http://localhost:3333";
+const production = "https://ffxiv-search-app.herokuapp.com";
+const baseUrl = process.env.NODE_ENV ? production : development;
 
 export const search = (searchedItem) => {
     return { type: SEARCH, payload: searchedItem };

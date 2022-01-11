@@ -13,13 +13,18 @@ const ItemsContainer = ({ searchedItem, items, clicked, updateList }) => {
         //eslint-disable-next-line
     }, [searchedItem]);
 
-    const targetItem = items.find((item) => {
-        return item.ID === selectedId;
-    });
+    let targetItem;
+
+    if (Array.isArray(items)) {
+        targetItem = items.find((item) => {
+            return item.ID === selectedId;
+        });
+    }
 
     return (
         <div className="items">
             {!clicked || targetItem === undefined ? (
+                Array.isArray(items) &&
                 items.map((item) => {
                     return (
                         <ItemCard

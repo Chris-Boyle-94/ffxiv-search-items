@@ -4,7 +4,9 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { setLoggedIn } from "../../actions";
 
-const baseUrl = process.env.baseUrl || "http://localhost:3333";
+const development = "http://localhost:3333";
+const production = "https://ffxiv-search-app.herokuapp.com";
+const baseUrl = process.env.NODE_ENV ? production : development;
 const initialValues = {
     username: "",
     password: "",

@@ -4,12 +4,15 @@ import { connect } from "react-redux";
 import ItemCard from "./item-components/ItemCard";
 import ItemDetails from "./item-components/ItemDetails";
 import { setUserFavorites } from "../actions";
+import { v4 as uuidv4 } from "uuid";
 
 const FavoritesPage = ({ clicked, setUserFavorites, userFavorites }) => {
     const [favoritesList, setFavoritesList] = useState([]);
     const [selectedId, setSelectedId] = useState("");
 
-    const baseUrl = process.env.baseUrl || "http://localhost:3333";
+    const development = "http://localhost:3333";
+    const production = "https://ffxiv-search-app.herokuapp.com";
+    const baseUrl = process.env.NODE_ENV ? production : development;
     const userId = localStorage.getItem("user_id");
 
     const targetItem = favoritesList.find((item) => {
@@ -62,7 +65,7 @@ const FavoritesPage = ({ clicked, setUserFavorites, userFavorites }) => {
                     return (
                         <ItemCard
                             data={favorite}
-                            key={favorite.favorite_id}
+                            key={uuidv4()}
                             setSelectedId={setSelectedId}
                         />
                     );
