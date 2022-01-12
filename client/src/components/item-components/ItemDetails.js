@@ -16,7 +16,7 @@ const ItemDetails = ({
     const userId = localStorage.getItem("user_id");
     const encodedUrl = encodeURI(Url);
     const development = "http://localhost:3333";
-    const production = "https://moghead.herokuapp.com/";
+    const production = "https://moghead.herokuapp.com";
     const baseUrl = process.env.NODE_ENV ? production : development;
 
     const requestInfo = async () => {
