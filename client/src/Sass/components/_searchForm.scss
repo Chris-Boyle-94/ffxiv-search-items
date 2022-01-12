@@ -9,8 +9,8 @@
     align-items: center;
 
     &__form {
+        width: 85%;
         @include v.mq(tablet) {
-            width: 85%;
             align-self: center;
         }
         @include v.mq(laptop) {
@@ -22,6 +22,8 @@
 
     &__input {
         border-radius: 0.2rem 0 0 0.2rem;
+        width: 70%;
+        margin-left: 6%;
         @include v.mq(tablet) {
             width: 75%;
             margin-left: 7%;
