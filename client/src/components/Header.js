@@ -18,7 +18,6 @@ const Header = ({ click, setLoggedIn, isLoggedIn }) => {
             setLoggedIn(false);
         }
     };
-
     const handleClick = () => {
         click();
         history.push("/");
@@ -40,7 +39,6 @@ const Header = ({ click, setLoggedIn, isLoggedIn }) => {
                             Home
                         </Link>
                     </li>
-
                     <li>
                         <Link className="header__text" to="/favorites">
                             Favorites
