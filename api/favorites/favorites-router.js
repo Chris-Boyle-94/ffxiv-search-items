@@ -7,16 +7,6 @@ const {
 } = require("./favorites-middleware");
 const Favorites = require("./favorites-model");
 
-router.get("/", (req, res, next) => {
-    Favorites.findAll()
-        .then((favorites) => {
-            res.status(200).json(favorites);
-        })
-        .catch((err) => {
-            next(err);
-        });
-});
-
 router.get("/:id", async (req, res, next) => {
     const { id } = req.params;
 

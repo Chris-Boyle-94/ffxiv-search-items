@@ -9,16 +9,6 @@ const {
     validateExistingUser,
 } = require("../general-middleware");
 
-router.get("/", (req, res, next) => {
-    Users.findAll()
-        .then((users) => {
-            res.status(200).json(users);
-        })
-        .catch((err) => {
-            next(err);
-        });
-});
-
 router.post("/register", validateNewUser, async (req, res, next) => {
     const user = req.body;
     const rounds = process.env.BCRYPT_ROUNDS || 8;

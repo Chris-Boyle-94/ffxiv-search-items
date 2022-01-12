@@ -21,8 +21,8 @@ export const updateList = (search) => {
     };
 };
 
-export const click = () => {
-    return { type: CLICK };
+export const click = (bool) => {
+    return { type: CLICK, payload: bool };
 };
 
 export const setLoggedIn = (bool) => {

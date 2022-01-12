@@ -35,6 +35,9 @@
     &__logo {
         width: v.$L;
         border-radius: v.$S;
+        &:hover {
+            cursor: pointer;
+        }
 
         @include v.mq(tablet) {
             width: 6rem;

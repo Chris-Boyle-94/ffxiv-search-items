@@ -56,7 +56,7 @@ const ItemDetails = ({
     }, []);
 
     const handleClick = () => {
-        click();
+        click(false);
     };
 
     const handlePostFavorite = () => {

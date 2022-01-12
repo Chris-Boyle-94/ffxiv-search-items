@@ -1,10 +1,10 @@
 import { Link, useHistory } from "react-router-dom";
 import SearchForm from "./SearchForm";
 import { connect } from "react-redux";
-import { click, setLoggedIn } from "../actions";
+import { click, setLoggedIn, search } from "../actions";
 import moogle from "../imgs/moogle.jpg";
 
-const Header = ({ click, setLoggedIn, isLoggedIn }) => {
+const Header = ({ click, setLoggedIn, isLoggedIn, search }) => {
     const history = useHistory();
     const token = localStorage.getItem("token");
 
@@ -19,14 +19,20 @@ const Header = ({ click, setLoggedIn, isLoggedIn }) => {
         }
     };
     const handleClick = () => {
-        click();
+        click(false);
+        search("");
         history.push("/");
     };
 
     return (
         <div className="header">
             <div className="header__logo-title">
-                <img className="header__logo" src={moogle} alt="moogle" />
+                <img
+                    className="header__logo"
+                    src={moogle}
+                    alt="moogle"
+                    onClick={handleClick}
+                />
                 <h1 className="header__title" onClick={handleClick}>
                     Moghead
                 </h1>
@@ -79,4 +85,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { click, setLoggedIn })(Header);
+export default connect(mapStateToProps, { click, setLoggedIn, search })(Header);
