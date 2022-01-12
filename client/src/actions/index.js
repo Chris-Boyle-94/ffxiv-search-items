@@ -7,7 +7,7 @@ export const IS_LOGGED_IN = "IS_LOGGED_IN";
 export const USER_FAVORITES = "USER_FAVORITES";
 
 const development = "http://localhost:3333";
-const production = "https://ffxiv-search-app.herokuapp.com";
+const production = "https://moghead.herokuapp.com";
 const baseUrl = process.env.NODE_ENV ? production : development;
 
 export const search = (searchedItem) => {
@@ -21,8 +21,8 @@ export const updateList = (search) => {
     };
 };
 
-export const click = () => {
-    return { type: CLICK };
+export const click = (bool) => {
+    return { type: CLICK, payload: bool };
 };
 
 export const setLoggedIn = (bool) => {

@@ -7,7 +7,7 @@ const ItemCard = ({ data, setSelectedId, click }) => {
 
     const handleClick = () => {
         setSelectedId(ID);
-        click();
+        click(true);
     };
 
     return (

@@ -15,6 +15,9 @@
     @include v.mq(laptop) {
         margin-top: 11.5rem;
     }
+    @include v.mq(desktop) {
+        margin-left: -0.5rem;
+    }
 
     &__card {
         display: flex;
@@ -27,6 +30,8 @@
         box-shadow: 2px 2px 5px;
         @include v.mq(laptop) {
             width: 22rem;
+            min-height: 220px;
+            align-items: center;
         }
 
         &:hover {
@@ -130,11 +135,11 @@
         padding: 0 0.3rem;
         margin: 0.5rem 0;
 
-        // &:hover {
-        //     background-color: v.$silver;
-        //     border: 1px solid v.$darkerGrey;
-        //     color: v.$darkerGrey;
-        //     cursor: pointer;
-        // }
+        &:hover {
+            background-color: v.$silver;
+            border: 1px solid v.$darkerGrey;
+            color: v.$darkerGrey;
+            cursor: pointer;
+        }
     }
 }

@@ -29,7 +29,7 @@ export const reducer = (state = initialState, action) => {
         case CLICK:
             return {
                 ...state,
-                clicked: !state.clicked,
+                clicked: action.payload,
             };
         case IS_LOGGED_IN:
             return {

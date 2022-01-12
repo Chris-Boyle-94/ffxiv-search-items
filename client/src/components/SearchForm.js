@@ -28,7 +28,7 @@ const SearchForm = ({ search }) => {
                     type="text"
                     value={formValue}
                     onChange={handleChange}
-                    placeholder="Search for items like robe, sword, potion, etc..."
+                    placeholder="Search: sword, potion, etc..."
                 />
                 <button className="searchForm__button" type="submit">
                     Search
