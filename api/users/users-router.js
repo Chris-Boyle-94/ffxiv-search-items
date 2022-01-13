@@ -9,15 +9,15 @@ const {
     validateExistingUser,
 } = require("../general-middleware");
 
-router.post("/register", validateNewUser, async (req, res, next) => {
+router.post("/register", validateNewUser, (req, res, next) => {
     const user = req.body;
     const rounds = process.env.BCRYPT_ROUNDS || 8;
     const hash = bcrypt.hashSync(user.password, rounds);
     user.password = hash;
 
     try {
-        const response = await Users.insertUser(user);
-        res.status(201).json(response);
+        Users.insertUser(user);
+        res.status(201).json({ message: "registration successful" });
     } catch (err) {
         next(err);
     }

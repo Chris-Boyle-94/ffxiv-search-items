@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Credentials from "./components/credentials-components/Credentials";
 import FavoritesPage from "./components/FavoritesPage";
 import Header from "./components/Header";
+import Login from "./components/credentials-components/Login";
+import SignUp from "./components/credentials-components/SignUp";
 import ItemsContainer from "./components/item-components/ItemsContainer";
 
 function App() {
@@ -11,18 +12,8 @@ function App() {
                 <Header />
                 <Switch>
                     <Route path="/favorites" component={FavoritesPage} />
-                    <Route
-                        path="/login"
-                        render={(props) => (
-                            <Credentials {...props} account={true} />
-                        )}
-                    />
-                    <Route
-                        path="/sign-up"
-                        render={(props) => (
-                            <Credentials {...props} account={false} />
-                        )}
-                    />
+                    <Route path="/login" component={Login} />
+                    <Route path="/sign-up" component={SignUp} />
                     <Route exact path="/" component={ItemsContainer} />
                 </Switch>
             </div>

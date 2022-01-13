@@ -16,6 +16,10 @@ const SignUp = ({ setLoggedIn }) => {
     const [formValues, setFormValues] = useState(initialValues);
     const history = useHistory();
 
+    const handleClick = () => {
+        history.push("/login");
+    };
+
     const handleChange = (e) => {
         e.preventDefault();
         setFormValues({
@@ -48,29 +52,41 @@ const SignUp = ({ setLoggedIn }) => {
     };
 
     return (
-        <div className="credentials__forms">
-            <label className="credentials__forms__label">Sign Up</label>
-            <form className="credentials__forms__form" onSubmit={handleSubmit}>
-                <input
-                    className="credentials__forms__input"
-                    name="username"
-                    type="text"
-                    value={formValues.username}
-                    onChange={handleChange}
-                    placeholder="Username"
-                />
-                <input
-                    className="credentials__forms__input"
-                    name="password"
-                    type="password"
-                    value={formValues.password}
-                    onChange={handleChange}
-                    placeholder="Password"
-                />
-                <button className="credentials__button" type="submit">
-                    Submit
-                </button>
-            </form>
+        <div className="credentials">
+            <div className="credentials__forms">
+                <label className="credentials__forms__label">Sign Up</label>
+                <form
+                    className="credentials__forms__form"
+                    onSubmit={handleSubmit}
+                >
+                    <input
+                        className="credentials__forms__input"
+                        name="username"
+                        type="text"
+                        value={formValues.username}
+                        onChange={handleChange}
+                        placeholder="Username"
+                    />
+                    <input
+                        className="credentials__forms__input"
+                        name="password"
+                        type="password"
+                        value={formValues.password}
+                        onChange={handleChange}
+                        placeholder="Password"
+                    />
+                    <button className="credentials__button" type="submit">
+                        Submit
+                    </button>
+                    <button
+                        name="toSignup"
+                        className="credentials__button"
+                        onClick={handleClick}
+                    >
+                        Don't have an account? Login!
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };
