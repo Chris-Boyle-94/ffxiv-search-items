@@ -59,7 +59,11 @@ const Header = ({ click, setLoggedIn, isLoggedIn, search }) => {
             ) : (
                 <nav className="header__container">
                     <li>
-                        <Link className="header__text" to="/">
+                        <Link
+                            className="header__text"
+                            to="/"
+                            onClick={handleClick}
+                        >
                             Home
                         </Link>
                     </li>
@@ -82,6 +86,7 @@ const Header = ({ click, setLoggedIn, isLoggedIn, search }) => {
 const mapStateToProps = (state) => {
     return {
         isLoggedIn: state.isLoggedIn,
+        hasAccount: state.hasAccount,
     };
 };
 

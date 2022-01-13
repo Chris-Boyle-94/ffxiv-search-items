@@ -46,7 +46,8 @@
     }
 
     &__label {
-        font-family: v.$Nunito;
+        font-family: v.$SpectralSC;
+        font-weight: bold;
         font-style: italic;
         font-size: v.$S;
         color: v.$silver;
@@ -72,7 +73,7 @@
         }
 
         &__h2 {
-            font-family: v.$Nunito;
+            font-family: v.$SpectralSC;
             font-weight: bold;
             color: v.$silver;
             font-size: v.$S;
@@ -85,7 +86,7 @@
         }
 
         &__h4 {
-            font-family: v.$Nunito;
+            font-family: v.$SpectralSC;
             font-weight: bold;
             font-size: v.$XS;
             color: v.$silver;
@@ -98,7 +99,8 @@
         }
 
         &__p {
-            font-family: v.$Nunito;
+            font-family: v.$SpectralSC;
+            font-weight: bold;
             font-style: italic;
             font-size: v.$S;
             color: v.$silver;

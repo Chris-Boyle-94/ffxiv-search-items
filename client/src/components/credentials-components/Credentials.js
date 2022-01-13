@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { connect } from "react-redux";
+import { setHasAccount } from "../../actions";
 
 import SignUp from "./SignUp";
 import Login from "./Login";
 
-const Credentials = ({ account }) => {
-    const [hasAccount, setHasAccount] = useState(account);
+const Credentials = ({ account, hasAccount, setHasAccount }) => {
+    if (account) {
+        setHasAccount(true);
+    } else {
+        setHasAccount(false);
+    }
 
     const handleClick = (e) => {
         setHasAccount(!hasAccount);
@@ -37,4 +42,10 @@ const Credentials = ({ account }) => {
     );
 };
 
-export default Credentials;
+const mapStateToProps = (state) => {
+    return {
+        hasAccount: state.hasAccount,
+    };
+};
+
+export default connect(mapStateToProps, { setHasAccount })(Credentials);

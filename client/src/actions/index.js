@@ -5,6 +5,7 @@ export const ITEM_UPDATE = "ITEM_UPDATE";
 export const CLICK = "CLICK";
 export const IS_LOGGED_IN = "IS_LOGGED_IN";
 export const USER_FAVORITES = "USER_FAVORITES";
+export const HAS_ACCOUNT = "HAS_ACCOUNT";
 
 const development = "http://localhost:3333";
 const production = "https://moghead.herokuapp.com";
@@ -31,4 +32,8 @@ export const setLoggedIn = (bool) => {
 
 export const setUserFavorites = (favorites) => {
     return { type: USER_FAVORITES, payload: favorites };
+};
+
+export const setHasAccount = (bool) => {
+    return { type: HAS_ACCOUNT, payload: bool };
 };

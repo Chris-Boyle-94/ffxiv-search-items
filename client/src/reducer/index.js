@@ -4,6 +4,7 @@ import {
     USER_FAVORITES,
     ITEM_UPDATE,
     SEARCH,
+    HAS_ACCOUNT,
 } from "../actions";
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
     clicked: false,
     isLoggedIn: false,
     userFavorites: [],
+    hasAccount: false,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -40,6 +42,11 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 userFavorites: action.payload,
+            };
+        case HAS_ACCOUNT:
+            return {
+                ...state,
+                hasAccount: action.payload,
             };
         default:
             return state;

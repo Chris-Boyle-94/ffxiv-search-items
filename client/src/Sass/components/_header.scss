@@ -35,6 +35,7 @@
     &__logo {
         width: v.$L;
         border-radius: v.$S;
+        box-shadow: 2px 2px #383838;
         &:hover {
             cursor: pointer;
         }
@@ -68,11 +69,13 @@
 
     &__title {
         font-size: v.$M;
-        font-family: v.$Nunito;
+        font-family: v.$SpectralSC;
         font-style: italic;
         font-weight: bold;
         color: v.$silver;
         margin-top: 0.5rem;
+        padding-right: 0.5rem;
+        text-shadow: 2px 2px #383838;
 
         @include v.mq(tablet) {
             font-size: 3.5rem;
@@ -95,10 +98,11 @@
 
     &__text {
         margin: 1rem;
-        font-family: v.$Nunito;
+        font-family: v.$SpectralSC;
         font-weight: bold;
         font-size: v.$S;
         color: v.$silver;
+        text-shadow: 2px 2px #383838;
 
         @include v.mq(tablet) {
             font-size: 2rem;
