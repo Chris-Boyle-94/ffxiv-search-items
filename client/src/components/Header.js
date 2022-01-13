@@ -5,8 +5,8 @@ import { click, setLoggedIn, search } from "../actions";
 import moogle from "../imgs/moogle.jpg";
 
 const Header = ({ click, setLoggedIn, isLoggedIn, search }) => {
-    const history = useHistory();
     const token = localStorage.getItem("token");
+    const history = useHistory();
 
     const logout = () => {
         localStorage.removeItem("token");

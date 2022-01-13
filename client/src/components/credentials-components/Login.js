@@ -6,7 +6,8 @@ import { setLoggedIn } from "../../actions";
 
 const development = "http://localhost:3333";
 const production = "https://moghead.herokuapp.com";
-const baseUrl = process.env.NODE_ENV ? production : development;
+const baseUrl =
+    process.env.NODE_ENV === "production" ? production : development;
 const initialValues = {
     username: "",
     password: "",
@@ -15,6 +16,10 @@ const initialValues = {
 const Login = ({ setLoggedIn }) => {
     const [formValues, setFormValues] = useState(initialValues);
     const history = useHistory();
+
+    const handleClick = () => {
+        history.push("/sign-up");
+    };
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -42,29 +47,41 @@ const Login = ({ setLoggedIn }) => {
     };
 
     return (
-        <div className="credentials__forms">
-            <label className="credentials__forms__label">Login</label>
-            <form className="credentials__forms__form" onSubmit={handleSubmit}>
-                <input
-                    className="credentials__forms__input"
-                    name="username"
-                    type="text"
-                    value={formValues.username}
-                    onChange={handleChange}
-                    placeholder="Username"
-                />
-                <input
-                    className="credentials__forms__input"
-                    name="password"
-                    type="password"
-                    value={formValues.password}
-                    onChange={handleChange}
-                    placeholder="Password"
-                />
-                <button className="credentials__button" type="submit">
-                    Submit
-                </button>
-            </form>
+        <div className="credentials">
+            <div className="credentials__forms">
+                <label className="credentials__forms__label">Login</label>
+                <form
+                    className="credentials__forms__form"
+                    onSubmit={handleSubmit}
+                >
+                    <input
+                        className="credentials__forms__input"
+                        name="username"
+                        type="text"
+                        value={formValues.username}
+                        onChange={handleChange}
+                        placeholder="Username"
+                    />
+                    <input
+                        className="credentials__forms__input"
+                        name="password"
+                        type="password"
+                        value={formValues.password}
+                        onChange={handleChange}
+                        placeholder="Password"
+                    />
+                    <button className="credentials__button" type="submit">
+                        Submit
+                    </button>
+                    <button
+                        name="toLogin"
+                        className="credentials__button"
+                        onClick={handleClick}
+                    >
+                        Already have an account? Sign up!
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };
