@@ -9,7 +9,8 @@ export const HAS_ACCOUNT = "HAS_ACCOUNT";
 
 const development = "http://localhost:3333";
 const production = "https://moghead.herokuapp.com";
-const baseUrl = process.env.NODE_ENV ? production : development;
+const baseUrl =
+    process.env.NODE_ENV === "production" ? production : development;
 
 export const search = (searchedItem) => {
     return { type: SEARCH, payload: searchedItem };

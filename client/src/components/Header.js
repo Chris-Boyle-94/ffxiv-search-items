@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import SearchForm from "./SearchForm";
 import { connect } from "react-redux";
 import { click, setLoggedIn, search } from "../actions";
@@ -6,6 +6,7 @@ import moogle from "../imgs/moogle.jpg";
 
 const Header = ({ click, setLoggedIn, isLoggedIn, search }) => {
     const token = localStorage.getItem("token");
+    const history = useHistory();
 
     const logout = () => {
         localStorage.removeItem("token");
@@ -20,6 +21,7 @@ const Header = ({ click, setLoggedIn, isLoggedIn, search }) => {
     const handleClick = () => {
         click(false);
         search("");
+        history.push("/");
     };
 
     return (

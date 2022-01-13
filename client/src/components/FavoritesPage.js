@@ -12,7 +12,8 @@ const FavoritesPage = ({ clicked, setUserFavorites, userFavorites }) => {
 
     const development = "http://localhost:3333";
     const production = "https://moghead.herokuapp.com";
-    const baseUrl = process.env.NODE_ENV ? production : development;
+    const baseUrl =
+        process.env.NODE_ENV === "production" ? production : development;
     const userId = localStorage.getItem("user_id");
 
     const targetItem = favoritesList.find((item) => {
