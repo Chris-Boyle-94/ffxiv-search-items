@@ -1,4 +1,4 @@
-# ffxiv-search-items
+# Moghead
 
 Deployed here (through a single deployment process):
 https://moghead.herokuapp.com/
