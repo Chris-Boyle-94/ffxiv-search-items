@@ -17,7 +17,7 @@ router.post("/register", validateNewUser, (req, res, next) => {
 
     try {
         Users.insertUser(user);
-        res.status(201).json({ message: "registration successful" });
+        res.status(201).json({ message: "registration was successful" });
     } catch (err) {
         next(err);
     }
