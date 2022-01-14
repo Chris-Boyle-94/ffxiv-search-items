@@ -1,9 +1,4 @@
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    IndexRoute,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import FavoritesPage from "./components/FavoritesPage";
 import Header from "./components/Header";
 import Login from "./components/credentials-components/Login";
@@ -16,7 +11,6 @@ function App() {
             <div className="App">
                 <Header />
                 <Switch>
-                    <IndexRoute component={ItemsContainer} />
                     <Route path="/favorites" component={FavoritesPage} />
                     <Route path="/login" component={Login} />
                     <Route path="/sign-up" component={SignUp} />

@@ -1,17 +1,12 @@
-import { useEffect, useState, Component } from "react";
+import { useEffect, useState } from "react";
 
 import { connect } from "react-redux";
 import { updateList } from "../../actions";
 import ItemCard from "./ItemCard";
 import ItemDetails from "./ItemDetails";
-import PropTypes from "prop-types";
 
 const ItemsContainer = ({ searchedItem, items, clicked, updateList }) => {
     const [selectedId, setSelectedId] = useState("");
-
-    Component.propTypes = {
-        children: PropTypes.node,
-    };
 
     useEffect(() => {
         updateList(searchedItem);
