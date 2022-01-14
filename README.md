@@ -14,6 +14,7 @@ What you can do with this application:
 Tech stack:
   - React
   - Sass
+  - Redux
   - Node.js
   - Express
   - PostgreSQL
