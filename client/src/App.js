@@ -7,7 +7,7 @@ import ItemsContainer from "./components/item-components/ItemsContainer";
 
 function App() {
     return (
-        <Router basename="/">
+        <Router>
             <div className="App">
                 <Header />
                 <Switch>
