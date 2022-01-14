@@ -24,7 +24,10 @@ server.use("/favorites", favoritesRouter);
 if (process.env.NODE_ENV === "production") {
     server.use(express.static(path.resolve(__dirname, "../client/build")));
     server.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "../client/public", "index.html"));
+        // res.sendFile(path.join(__dirname, "../client/public", "index.html"));
+        res.sendFile("index.html", { root: __dirname }, (err) => {
+            res.status(500).send(err);
+        });
     });
 }
 
