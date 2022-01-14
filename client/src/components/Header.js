@@ -41,7 +41,11 @@ const Header = ({ click, setLoggedIn, isLoggedIn, search }) => {
             {isLoggedIn || token ? (
                 <nav className="header__container">
                     <li>
-                        <Link className="header__text" to="/">
+                        <Link
+                            className="header__text"
+                            to="/"
+                            onClick={handleClick}
+                        >
                             Home
                         </Link>
                     </li>
