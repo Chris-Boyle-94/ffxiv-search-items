@@ -16,7 +16,7 @@ function App() {
             <div className="App">
                 <Header />
                 <Switch>
-                    <IndexRoute component={App} />
+                    <IndexRoute component={ItemsContainer} />
                     <Route path="/favorites" component={FavoritesPage} />
                     <Route path="/login" component={Login} />
                     <Route path="/sign-up" component={SignUp} />
