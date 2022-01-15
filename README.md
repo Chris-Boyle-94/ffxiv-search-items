@@ -21,4 +21,4 @@ Tech stack:
 
 Features in the works:
   - JWT authentication for users
-  - Upgradding React Router DOM to v6
+  - Upgrading React Router DOM to v6
