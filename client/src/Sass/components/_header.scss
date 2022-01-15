@@ -10,6 +10,8 @@
     align-items: flex-start;
     background-color: v.$darkerGrey;
     border-bottom: 6px solid v.$lighterGrey;
+    box-shadow: 0 4px 0.5rem;
+
     @include v.mq(laptop) {
         flex-direction: row;
         justify-content: space-around;
