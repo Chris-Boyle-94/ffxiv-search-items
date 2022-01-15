@@ -18,3 +18,7 @@ Tech stack:
   - Node.js
   - Express
   - PostgreSQL
+
+Features in the works:
+  - JWT authentication for users
+  - Upgradding React Router DOM to v6
