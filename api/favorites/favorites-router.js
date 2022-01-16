@@ -5,11 +5,11 @@ const {
     validateNewFavorite,
     validateExistingFavorite,
 } = require("./favorites-middleware");
+const restricted = require("../auth/restricted-middleware");
 const Favorites = require("./favorites-model");
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", restricted, async (req, res, next) => {
     const { id } = req.params;
-
     try {
         const userFavorites = await Favorites.findUserFavorites(id);
 
@@ -23,7 +23,7 @@ router.get("/:id", async (req, res, next) => {
     }
 });
 
-router.post("/specific", async (req, res, next) => {
+router.post("/specific", restricted, async (req, res, next) => {
     const favorite = req.body;
 
     try {
@@ -34,7 +34,7 @@ router.post("/specific", async (req, res, next) => {
     }
 });
 
-router.post("/", validateNewFavorite, async (req, res, next) => {
+router.post("/", restricted, validateNewFavorite, async (req, res, next) => {
     const favoriteReq = req.body;
 
     try {
