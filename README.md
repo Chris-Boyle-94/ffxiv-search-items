@@ -22,3 +22,4 @@ Tech stack:
 
 Features in the works:
   - Upgrading React Router DOM to v6
+  - Mobile header moves up and off the page when a user scrolls down the page and reappears when they start to scroll up
