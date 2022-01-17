@@ -1,5 +1,5 @@
 import { useEffect, useCallback, useState } from "react";
-import axios from "axios";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { connect } from "react-redux";
 import ItemCard from "./item-components/ItemCard";
 import ItemDetails from "./item-components/ItemDetails";
@@ -22,7 +22,9 @@ const FavoritesPage = ({ clicked, setUserFavorites, userFavorites }) => {
 
     const getUserFavorites = useCallback(async () => {
         try {
-            const response = await axios.get(`${baseUrl}/favorites/${userId}`);
+            const response = await axiosWithAuth().get(
+                `${baseUrl}/favorites/${userId}`
+            );
             setUserFavorites(response.data);
         } catch (err) {
             console.log(err);
@@ -33,7 +35,7 @@ const FavoritesPage = ({ clicked, setUserFavorites, userFavorites }) => {
     const getItems = () => {
         userFavorites.map(async (favorite) => {
             try {
-                const response = await axios.get(
+                const response = await axiosWithAuth().get(
                     `${baseUrl}/items/${favorite.item_id}`
                 );
                 setFavoritesList((favoritesList) => [

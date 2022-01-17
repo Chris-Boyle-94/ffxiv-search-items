@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-
 import axios from "axios";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
+
 import { connect } from "react-redux";
 import { click, setUserFavorites } from "../../actions";
 
@@ -37,10 +38,13 @@ const ItemDetails = ({
 
     const handleHasFavorite = async () => {
         try {
-            const response = await axios.post(`${baseUrl}/favorites/specific`, {
-                user_id: userId,
-                item_id: ID,
-            });
+            const response = await axiosWithAuth().post(
+                `${baseUrl}/favorites/specific`,
+                {
+                    user_id: userId,
+                    item_id: ID,
+                }
+            );
 
             if (response.data.length > 0) {
                 setHasFavorite(true);
