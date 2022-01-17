@@ -39,7 +39,6 @@ router.post("/login", validateExistingUser, async (req, res, next) => {
             const token = buildToken(user);
 
             res.status(200).json({
-                user_id: user.user_id,
                 message: `Signed in as user: ${username}`,
                 token,
             });

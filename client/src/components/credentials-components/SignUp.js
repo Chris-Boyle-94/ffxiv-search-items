@@ -42,7 +42,6 @@ const SignUp = ({ setLoggedIn }) => {
                     formValues
                 );
                 localStorage.setItem("token", login.data.token);
-                localStorage.setItem("user_id", login.data.user_id);
                 setLoggedIn(true);
                 history.push("/");
             }
