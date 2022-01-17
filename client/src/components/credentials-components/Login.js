@@ -37,7 +37,6 @@ const Login = ({ setLoggedIn }) => {
                 formValues
             );
             localStorage.setItem("token", response.data.token);
-            localStorage.setItem("user_id", response.data.user_id);
             setLoggedIn(true);
             history.push("/");
         } catch (err) {
