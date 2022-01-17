@@ -10,6 +10,7 @@ What you can do with this application:
   - Clicking on an item shows more detailed information about that item
   - Create an account (only requires username and password)
   - Having an account allows you to favorite/unfavorite items which are displayed in your favorites page
+  - token authentication for my-favorites routes and endpoints
 
 Tech stack:
   - React
@@ -20,5 +21,4 @@ Tech stack:
   - PostgreSQL
 
 Features in the works:
-  - JWT authentication for users
   - Upgrading React Router DOM to v6
