@@ -50,7 +50,7 @@ const Header = ({ click, setLoggedIn, isLoggedIn, search }) => {
                     </li>
                     <li>
                         {localStorage.getItem("token") && (
-                            <Link className="header__text" to="/favorites">
+                            <Link className="header__text" to="/my-favorites">
                                 Favorites
                             </Link>
                         )}

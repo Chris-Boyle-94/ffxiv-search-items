@@ -12,7 +12,10 @@ function App() {
             <div className="App">
                 <Header />
                 <Switch>
-                    <PrivateRoute path="/favorites" component={FavoritesPage} />
+                    <PrivateRoute
+                        path="/my-favorites"
+                        component={FavoritesPage}
+                    />
                     <Route path="/login" component={Login} />
                     <Route path="/sign-up" component={SignUp} />
                     <Route exact path="/" component={ItemsContainer} />
