@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
             });
         }
 
-        req.decodedToken = decodedToken;
+        req.authData = decodedToken;
         return next();
     });
 };

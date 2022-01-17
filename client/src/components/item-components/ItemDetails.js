@@ -13,8 +13,8 @@ const ItemDetails = ({
 }) => {
     const [data, setData] = useState({});
     const [hasFavorite, setHasFavorite] = useState(false);
+    const [userId, setUserId] = useState("");
     const { Url, ID } = targetItem;
-    const userId = localStorage.getItem("user_id");
     const encodedUrl = encodeURI(Url);
     const development = "http://localhost:3333";
     const production = "https://moghead.herokuapp.com";
@@ -36,12 +36,16 @@ const ItemDetails = ({
         return ID === item.item_id;
     });
 
+    const getUserId = async () => {
+        const response = await axiosWithAuth().get(`${baseUrl}/users`);
+        setUserId(response.data);
+    };
+
     const handleHasFavorite = async () => {
         try {
             const response = await axiosWithAuth().post(
                 `${baseUrl}/favorites/specific`,
                 {
-                    user_id: userId,
                     item_id: ID,
                 }
             );
@@ -55,6 +59,7 @@ const ItemDetails = ({
     };
 
     useEffect(() => {
+        getUserId();
         requestInfo();
         handleHasFavorite();
         //eslint-disable-next-line
@@ -65,16 +70,14 @@ const ItemDetails = ({
     };
 
     const handlePostFavorite = () => {
-        axios.post(`${baseUrl}/favorites/`, {
-            user_id: userId,
+        axiosWithAuth().post(`${baseUrl}/favorites/`, {
             item_id: ID,
         });
     };
 
     const handleDeleteFavorite = () => {
-        axios.delete(`${baseUrl}/favorites/`, {
+        axiosWithAuth().delete(`${baseUrl}/favorites/`, {
             data: {
-                user_id: userId,
                 item_id: ID,
             },
         });

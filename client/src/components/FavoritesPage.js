@@ -14,7 +14,6 @@ const FavoritesPage = ({ clicked, setUserFavorites, userFavorites }) => {
     const production = "https://moghead.herokuapp.com";
     const baseUrl =
         process.env.NODE_ENV === "production" ? production : development;
-    const userId = localStorage.getItem("user_id");
 
     const targetItem = favoritesList.find((item) => {
         return item.ID === selectedId;
@@ -22,15 +21,13 @@ const FavoritesPage = ({ clicked, setUserFavorites, userFavorites }) => {
 
     const getUserFavorites = useCallback(async () => {
         try {
-            const response = await axiosWithAuth().get(
-                `${baseUrl}/favorites/${userId}`
-            );
+            const response = await axiosWithAuth().get(`${baseUrl}/favorites/`);
             setUserFavorites(response.data);
         } catch (err) {
             console.log(err);
         }
         //eslint-disable-next-line
-    }, [baseUrl, userId]);
+    }, [baseUrl]);
 
     const getItems = () => {
         userFavorites.map(async (favorite) => {

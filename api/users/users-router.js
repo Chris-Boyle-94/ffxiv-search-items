@@ -2,12 +2,19 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const { buildToken } = require("../auth/token-builder");
+const restricted = require("../auth/restricted-middleware");
 
 const Users = require("./users-model");
 const {
     validateNewUser,
     validateExistingUser,
 } = require("../general-middleware");
+
+router.get("/", restricted, (req, res) => {
+    const { user_id } = req.authData;
+
+    res.status(200).json(user_id);
+});
 
 router.post("/register", validateNewUser, async (req, res, next) => {
     const user = req.body;

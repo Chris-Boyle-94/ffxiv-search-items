@@ -8,10 +8,10 @@ const {
 const restricted = require("../auth/restricted-middleware");
 const Favorites = require("./favorites-model");
 
-router.get("/:id", restricted, async (req, res, next) => {
-    const { id } = req.params;
+router.get("/", restricted, async (req, res, next) => {
+    const { user_id } = req.authData;
     try {
-        const userFavorites = await Favorites.findUserFavorites(id);
+        const userFavorites = await Favorites.findUserFavorites(user_id);
 
         if (userFavorites) {
             res.status(200).json(userFavorites);
@@ -25,6 +25,8 @@ router.get("/:id", restricted, async (req, res, next) => {
 
 router.post("/specific", restricted, async (req, res, next) => {
     const favorite = req.body;
+    const { user_id } = req.authData;
+    favorite.user_id = user_id;
 
     try {
         const specificFavorite = await Favorites.findFavoriteByIds(favorite);
@@ -36,6 +38,8 @@ router.post("/specific", restricted, async (req, res, next) => {
 
 router.post("/", restricted, validateNewFavorite, async (req, res, next) => {
     const favoriteReq = req.body;
+    const { user_id } = req.authData;
+    favoriteReq.user_id = user_id;
 
     try {
         const newFavorite = await Favorites.newFavorite(favoriteReq);
@@ -47,16 +51,23 @@ router.post("/", restricted, validateNewFavorite, async (req, res, next) => {
     }
 });
 
-router.delete("/", validateExistingFavorite, async (req, res, next) => {
-    const favoriteReq = req.body;
+router.delete(
+    "/",
+    restricted,
+    validateExistingFavorite,
+    async (req, res, next) => {
+        const favoriteReq = req.body;
+        const { user_id } = req.authData;
+        favoriteReq.user_id = user_id;
 
-    try {
-        await Favorites.deleteFavorite(favoriteReq);
-        res.status(202).json({ message: "favorite successfully deleted" });
-    } catch (err) {
-        next(err);
+        try {
+            await Favorites.deleteFavorite(favoriteReq);
+            res.status(202).json({ message: "favorite successfully deleted" });
+        } catch (err) {
+            next(err);
+        }
     }
-});
+);
 
 //eslint-disable-next-line
 router.use((err, req, res, next) => {

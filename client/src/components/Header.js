@@ -10,7 +10,6 @@ const Header = ({ click, setLoggedIn, isLoggedIn, search }) => {
 
     const logout = () => {
         localStorage.removeItem("token");
-        localStorage.removeItem("user_id");
         if (isLoggedIn) {
             setLoggedIn(false);
         } else {
