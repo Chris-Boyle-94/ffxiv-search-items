@@ -5,7 +5,14 @@ import { updateList } from "../../actions";
 import ItemCard from "./ItemCard";
 import ItemDetails from "./ItemDetails";
 
-const ItemsContainer = ({ searchedItem, items, clicked, updateList }) => {
+interface ContainerProps {
+    searchedItem: string,
+    items: object[],
+    clicked: boolean,
+    updateList: (search: string) => void
+}
+
+const ItemsContainer = ({ searchedItem, items, clicked, updateList } : ContainerProps) => {
     const [selectedId, setSelectedId] = useState("");
 
     useEffect(() => {
@@ -13,19 +20,21 @@ const ItemsContainer = ({ searchedItem, items, clicked, updateList }) => {
         //eslint-disable-next-line
     }, [searchedItem]);
 
-    let targetItem;
+    let targetItem: object;
 
-    if (Array.isArray(items)) {
-        targetItem = items.find((item) => {
-            return item.ID === selectedId;
-        });
+    interface itemInterface {
+        [key: string]: any
     }
+
+    targetItem = items.find((item: itemInterface) => {
+        return item.ID === selectedId;
+    });
 
     return (
         <div className="items">
             {!clicked || targetItem === undefined ? (
                 Array.isArray(items) &&
-                items.map((item) => {
+                items.map((item: itemInterface) => {
                     return (
                         <ItemCard
                             data={item}
@@ -41,7 +50,7 @@ const ItemsContainer = ({ searchedItem, items, clicked, updateList }) => {
     );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: ContainerProps) => {
     return {
         searchedItem: state.searchedItem,
         items: state.items,

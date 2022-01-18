@@ -4,7 +4,7 @@ import FavoritesPage from "./components/FavoritesPage";
 import Header from "./components/Header";
 import Login from "./components/credentials-components/Login";
 import SignUp from "./components/credentials-components/SignUp";
-import ItemsContainer from "./components/item-components/ItemsContainer";
+import ItemsContainer from "./components/item-components/ItemsContainer.tsx";
 
 function App() {
     return (
