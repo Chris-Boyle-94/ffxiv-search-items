@@ -33,7 +33,6 @@ const ItemsContainer = ({ searchedItem, items, clicked, updateList } : Container
     return (
         <div className="items">
             {!clicked || targetItem === undefined ? (
-                Array.isArray(items) &&
                 items.map((item: itemInterface) => {
                     return (
                         <ItemCard
